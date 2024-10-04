@@ -28,3 +28,7 @@ With arguments: --verbose
 Program executed successfully.
 AdminToolbox application started
 AdminToolbox GUI initialized
+AdminToolbox application started
+AdminToolbox application started
+AdminToolbox GUI initialized
+AdminToolbox GUI initialized
