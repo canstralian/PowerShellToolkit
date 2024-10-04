@@ -26,3 +26,5 @@ Execute Program button clicked
 Simulating execution of program: test_program.exe
 With arguments: --verbose
 Program executed successfully.
+AdminToolbox application started
+AdminToolbox GUI initialized

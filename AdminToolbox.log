@@ -12,3 +12,5 @@
 2024-10-04 21:17:54,295 - INFO - Simulating execution of program: test_program.exe
 With arguments: --verbose
 Program executed successfully.
+2024-10-04 21:19:50,515 - INFO - AdminToolbox application started
+2024-10-04 21:19:50,583 - INFO - AdminToolbox GUI initialized
