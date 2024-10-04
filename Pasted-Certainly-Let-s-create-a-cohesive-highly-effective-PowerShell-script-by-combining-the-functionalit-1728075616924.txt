@@ -1,0 +1,206 @@
+Certainly! Let’s create a cohesive, highly effective PowerShell script by combining the functionality of the individual functions you’ve shared into a robust and practical tool. The goal here will be to build an all-in-one script for managing users, handling registry key values, interacting with XML files, and executing programs with user-friendly outputs and solid error handling.
+
+Script Overview:
+
+	1.	Reading and Modifying Registry Keys: Allows for getting registry key values.
+	2.	User Management: Grants and removes admin rights to/from users.
+	3.	Version Checking: Validates a version against a specific value.
+	4.	XML Handling: Reads XML files for use in configuration or data processing.
+	5.	Program Execution: Executes external programs with command-line arguments.
+
+Full Script:
+
+<#
+.SYNOPSIS
+A comprehensive script for managing local users, registry keys, XML files, version checking, and executing programs.
+
+.DESCRIPTION
+This script combines functionalities to manage local users' group memberships, handle registry key retrieval, read XML files, check version compliance, and execute external programs.
+
+.PARAMETER username
+The local user account for which to manage Admin permissions.
+
+.PARAMETER filePath
+Path to the XML file or registry key.
+
+.PARAMETER version
+Version to be checked against specified criteria.
+
+.EXAMPLE
+.\Utility-Script.ps1 -username "TestUser" -filePath "C:\path\to\file.xml" -version "1.12.0.2660"
+#>
+
+# Function to get a registry key value
+function Get-RegistryKeyValue {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Variable,
+
+        [Parameter(Mandatory = $true)]
+        [string]$Key,
+
+        [Parameter(Mandatory = $true)]
+        [string]$ValueName
+    )
+
+    try {
+        $regKey = Get-ItemProperty -Path "Registry::$Key" -Name $ValueName -ErrorAction Stop
+        $value = $regKey.$ValueName
+        Set-Variable -Name $Variable -Value $value
+        Write-Output "Registry key value for '$ValueName' retrieved: $value"
+    } catch {
+        Write-Error "Failed to retrieve the registry key value. Error: $_"
+    }
+}
+
+# Function to check if a version matches a specific value
+function Check-Version {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Variable,
+
+        [Parameter(Mandatory = $true)]
+        [string]$Value
+    )
+
+    if ($Variable -eq $Value) {
+        Write-Output "Version matches: $Value"
+    } else {
+        Write-Output "Version does not match. Expected: $Value, but got: $Variable"
+    }
+}
+
+# Function to execute a program
+function Execute-Program {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Pathname,
+
+        [Parameter(Mandatory = $true)]
+        [string]$CommandLine
+    )
+
+    try {
+        Start-Process -FilePath $Pathname -ArgumentList $CommandLine -Wait
+        Write-Output "Program executed successfully."
+    } catch {
+        Write-Error "Failed to execute the program. Error: $_"
+    }
+}
+
+# Function to grant admin permissions to a user
+function Grant-AdminPermissions {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$username
+    )
+
+    try {
+        $user = [ADSI]"WinNT://./$username,user"
+        $group = [ADSI]"WinNT://./Administrators,group"
+        $group.Add($user.Path)
+        Write-Output "User '$username' has been added to the Administrators group."
+    } catch {
+        Write-Error "Failed to add '$username' to the Administrators group. Error: $_"
+    }
+}
+
+# Function to remove admin permissions from a user
+function Remove-AdminFromLocalUser {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$username
+    )
+
+    try {
+        $user = Get-LocalUser -Name $username -ErrorAction Stop
+        $isMember = Get-LocalGroupMember -Group "Administrators" | Where-Object { $_.Name -eq $username }
+
+        if (-not $isMember) {
+            Write-Error "User '$username' is not a member of the Administrators group."
+            return
+        }
+
+        Remove-LocalGroupMember -Group "Administrators" -Member $username -ErrorAction Stop
+        Write-Output "User '$username' has been removed from the Administrators group."
+    } catch {
+        Write-Error "Failed to remove '$username' from the Administrators group. Error: $_"
+    }
+}
+
+# Function to read XML files
+function Read-XmlFile {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$filePath
+    )
+
+    try {
+        if (-Not (Test-Path $filePath)) {
+            throw "The file '$filePath' does not exist."
+        }
+
+        $xmlContent = [xml](Get-Content -Path $filePath -ErrorAction Stop)
+        Write-Output "XML file read successfully."
+        return $xmlContent
+    } catch {
+        Write-Error "Failed to read the XML file. Error: $_"
+    }
+}
+
+# Main Script Execution Flow
+# ----------------------------------------------------------------------------
+
+param (
+    [string]$username,
+    [string]$filePath,
+    [string]$version
+)
+
+# Demonstrate registry key retrieval (Replace with actual values)
+Get-RegistryKeyValue -Variable "SWVER2" -Key "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AF946771-8C4E-433E-BFCB-9241EF1B0A87}" -ValueName "DisplayVersion"
+
+# Version check (Optional based on use case)
+if ($version) {
+    Check-Version -Variable $SWVER2 -Value $version
+}
+
+# Read XML file (if specified)
+if ($filePath -and $filePath.EndsWith(".xml")) {
+    $xmlData = Read-XmlFile -filePath $filePath
+    Write-Output $xmlData
+}
+
+# Manage user admin permissions
+if ($username) {
+    Write-Output "Managing user permissions for: $username"
+    
+    # Example: Grant admin permissions
+    Grant-AdminPermissions -username $username
+
+    # Example: Remove admin permissions (uncomment to use)
+    # Remove-AdminFromLocalUser -username $username
+}
+
+# Execute a program (Replace with actual command)
+# Execute-Program -Pathname "$env:SystemRoot\System32\msiexec.exe" -CommandLine "/x{AF946771-8C4E-433E-BFCB-9241EF1B0A87} /qn"
+
+How This Script Works:
+
+	1.	Registry Key Management: It retrieves a registry key value and can store it in a variable for version checks.
+	2.	Version Checking: The Check-Version function compares the retrieved version value to a target version.
+	3.	Admin Permissions Management: It grants or removes a local user’s membership in the “Administrators” group.
+	4.	XML File Parsing: It reads and outputs the content of an XML file.
+	5.	Program Execution: It can execute a program with provided command-line arguments.
+
+Use Case Examples:
+
+   •   You can automate user group management, like granting or removing administrative privileges.
+   •   You can easily execute programs like installers or uninstallers with this script.
+   •   The registry and version check portions are useful for system version audits.
+   •   XML file parsing is helpful for handling configuration or data files within the same script.
+
+Additional Notes:
+
+   •   Modify the script by uncommenting certain lines or adding your own paths, program commands, or user names.
+   •   You can easily expand this script to include more functionality as your needs evolve.
