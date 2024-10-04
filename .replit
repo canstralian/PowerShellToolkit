@@ -11,6 +11,10 @@ author = "agent"
 task = "workflow.run"
 args = "Run AdminToolbox"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Run AdminToolbox GUI"
+
 [[workflows.workflow]]
 name = "Run AdminToolbox"
 author = "agent"
@@ -21,3 +25,20 @@ agentRequireRestartOnSave = false
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python admin_toolbox.py"
+
+[[workflows.workflow]]
+name = "Run AdminToolbox GUI"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python admin_toolbox.py"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "python admin_toolbox.py"]
