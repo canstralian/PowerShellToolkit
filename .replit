@@ -1,0 +1,23 @@
+modules = ["python-3.11"]
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Run AdminToolbox"
+
+[[workflows.workflow]]
+name = "Run AdminToolbox"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python admin_toolbox.py"
