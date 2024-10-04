@@ -1,0 +1,14 @@
+2024-10-04 21:17:52,200 - INFO - AdminToolbox application started
+2024-10-04 21:17:52,247 - INFO - AdminToolbox GUI initialized
+2024-10-04 21:17:54,248 - INFO - Registry Key Retrieval button clicked
+2024-10-04 21:17:54,248 - INFO - Registry key retrieval simulated for HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName
+2024-10-04 21:17:54,268 - INFO - Compare Versions button clicked
+2024-10-04 21:17:54,269 - INFO - Version comparison: Version does not match
+2024-10-04 21:17:54,278 - INFO - Read XML File button clicked
+2024-10-04 21:17:54,278 - ERROR - XML file not found: example.xml
+2024-10-04 21:17:54,286 - INFO - Admin Permissions button clicked
+2024-10-04 21:17:54,287 - INFO - Admin permissions granted to testuser
+2024-10-04 21:17:54,295 - INFO - Execute Program button clicked
+2024-10-04 21:17:54,295 - INFO - Simulating execution of program: test_program.exe
+With arguments: --verbose
+Program executed successfully.

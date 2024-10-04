@@ -1,5 +1,21 @@
 # AdminToolbox.ps1
 
+# Function to write log messages
+function Write-Log {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Message,
+
+        [Parameter(Mandatory = $false)]
+        [string]$LogFile = "AdminToolbox.log"
+    )
+
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logMessage = "[$timestamp] $Message"
+    Add-Content -Path $LogFile -Value $logMessage
+    Write-Output $logMessage
+}
+
 # Function to get a registry key value
 function Get-RegistryKeyValue {
     param (
@@ -11,13 +27,14 @@ function Get-RegistryKeyValue {
     )
 
     try {
+        Write-Log "Attempting to retrieve registry key value: $Key\$ValueName"
         $regKey = Get-ItemProperty -Path "Registry::$Key" -Name $ValueName -ErrorAction Stop
         $value = $regKey.$ValueName
-        Write-Output "Registry key value for '$ValueName' retrieved: $value"
+        Write-Log "Registry key value for '$ValueName' retrieved: $value"
         return $value
     }
     catch {
-        Write-Error "Failed to retrieve the registry key value. Error: $_"
+        Write-Log "Failed to retrieve the registry key value. Error: $_"
         return $null
     }
 }
@@ -32,12 +49,13 @@ function Compare-Version {
         [string]$TargetVersion
     )
 
+    Write-Log "Comparing versions - Current: $CurrentVersion, Target: $TargetVersion"
     if ($CurrentVersion -eq $TargetVersion) {
-        Write-Output "Version matches: $TargetVersion"
+        Write-Log "Version matches: $TargetVersion"
         return $true
     }
     else {
-        Write-Output "Version does not match. Expected: $TargetVersion, but got: $CurrentVersion"
+        Write-Log "Version does not match. Expected: $TargetVersion, but got: $CurrentVersion"
         return $false
     }
 }
@@ -50,23 +68,24 @@ function Read-XmlFile {
     )
 
     try {
+        Write-Log "Attempting to read XML file: $FilePath"
         if (-not (Test-Path $FilePath)) {
             throw "The file '$FilePath' does not exist."
         }
 
         $xmlContent = [xml](Get-Content -Path $FilePath -ErrorAction Stop)
-        Write-Output "XML file read successfully."
+        Write-Log "XML file read successfully: $FilePath"
         return $xmlContent
     }
     catch {
-        Write-Error "Failed to read the XML file. Error: $_"
+        Write-Log "Failed to read the XML file. Error: $_"
         return $null
     }
 }
 
 # Main script execution
 function Main {
-    Write-Output "AdminToolbox is running..."
+    Write-Log "AdminToolbox is running..."
 
     # Registry key retrieval example
     $registryKey = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
@@ -82,15 +101,15 @@ function Main {
     if (Test-Path $xmlFilePath) {
         $xmlData = Read-XmlFile -FilePath $xmlFilePath
         if ($xmlData) {
-            Write-Output "XML file contents:"
-            Write-Output $xmlData.OuterXml
+            Write-Log "XML file contents:"
+            Write-Log $xmlData.OuterXml
         }
     }
     else {
-        Write-Output "XML file not found. Skipping XML reading example."
+        Write-Log "XML file not found. Skipping XML reading example."
     }
 
-    Write-Output "AdminToolbox execution completed."
+    Write-Log "AdminToolbox execution completed."
 }
 
 # Run the main script

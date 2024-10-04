@@ -6,10 +6,19 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 import threading
 import time
+import logging
 
-def log_action(action):
+# Configure logging
+logging.basicConfig(filename='AdminToolbox.log', level=logging.INFO, 
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
+def log_action(action, level=logging.INFO):
+    # Log to GUI log file
     with open("gui_log.txt", "a") as log_file:
         log_file.write(f"{action}\n")
+    
+    # Log to AdminToolbox.log
+    logging.log(level, action)
 
 def get_registry_key_value(key, value_name):
     log_action(f"Registry key retrieval simulated for {key}\\{value_name}")
@@ -27,15 +36,15 @@ def read_xml_file(file_path):
         log_action(f"XML file read successfully: {file_path}")
         return "XML file read successfully.", ET.tostring(root, encoding='unicode')
     except FileNotFoundError:
-        log_action(f"XML file not found: {file_path}")
+        log_action(f"XML file not found: {file_path}", logging.ERROR)
         return f"The file '{file_path}' does not exist.", None
     except ET.ParseError:
-        log_action(f"Failed to parse XML file: {file_path}")
+        log_action(f"Failed to parse XML file: {file_path}", logging.ERROR)
         return f"Failed to parse the XML file: {file_path}", None
 
 def simulate_admin_permissions(username, action):
     if action.lower() not in ['grant', 'revoke']:
-        log_action(f"Invalid admin action: {action}")
+        log_action(f"Invalid admin action: {action}", logging.ERROR)
         return "Invalid action. Use 'grant' or 'revoke'."
 
     result = f"Admin permissions {action.lower()}ed {'to' if action.lower() == 'grant' else 'from'} {username}"
@@ -116,9 +125,11 @@ class AdminToolboxGUI:
         self.master.after(6000, self.master.quit)
 
 def main():
+    log_action("AdminToolbox application started")
     root = tk.Tk()
     AdminToolboxGUI(root)
     root.mainloop()
+    log_action("AdminToolbox application closed")
 
 if __name__ == "__main__":
     main()

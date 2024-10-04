@@ -12,3 +12,17 @@ Execute Program button clicked
 Simulating execution of program: test_program.exe
 With arguments: --verbose
 Program executed successfully.
+AdminToolbox application started
+AdminToolbox GUI initialized
+Registry Key Retrieval button clicked
+Registry key retrieval simulated for HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName
+Compare Versions button clicked
+Version comparison: Version does not match
+Read XML File button clicked
+XML file not found: example.xml
+Admin Permissions button clicked
+Admin permissions granted to testuser
+Execute Program button clicked
+Simulating execution of program: test_program.exe
+With arguments: --verbose
+Program executed successfully.
