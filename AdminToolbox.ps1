@@ -167,6 +167,75 @@ function Execute-RemoteProgram {
     }
 }
 
+# Function to write XML files (local or remote)
+function Write-XmlFile {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$FilePath,
+
+        [Parameter(Mandatory = $true)]
+        [xml]$XmlContent,
+
+        [Parameter(Mandatory = $false)]
+        [string]$ComputerName = $env:COMPUTERNAME
+    )
+
+    try {
+        Write-Log "Attempting to write XML file: $FilePath on $ComputerName"
+        Invoke-Command -ComputerName $ComputerName -ScriptBlock {
+            param($FilePath, $XmlContent)
+            $XmlContent.Save($FilePath)
+        } -ArgumentList $FilePath, $XmlContent
+        Write-Log "XML file written successfully to $ComputerName: $FilePath"
+        return "XML file written successfully."
+    }
+    catch {
+        $errorMessage = "Failed to write the XML file to $ComputerName. Error: $_"
+        Write-Log $errorMessage
+        return $errorMessage
+    }
+}
+
+# Function to modify XML files (local or remote)
+function Modify-XmlFile {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$FilePath,
+
+        [Parameter(Mandatory = $true)]
+        [string]$XPath,
+
+        [Parameter(Mandatory = $true)]
+        [string]$NewValue,
+
+        [Parameter(Mandatory = $false)]
+        [string]$ComputerName = $env:COMPUTERNAME
+    )
+
+    try {
+        Write-Log "Attempting to modify XML file: $FilePath on $ComputerName"
+        $result = Invoke-Command -ComputerName $ComputerName -ScriptBlock {
+            param($FilePath, $XPath, $NewValue)
+            $xml = [xml](Get-Content -Path $FilePath)
+            $node = $xml.SelectSingleNode($XPath)
+            if ($node -ne $null) {
+                $node.InnerText = $NewValue
+                $xml.Save($FilePath)
+                return "XML file modified successfully."
+            } else {
+                return "XPath not found in the XML file."
+            }
+        } -ArgumentList $FilePath, $XPath, $NewValue
+        Write-Log $result
+        return $result
+    }
+    catch {
+        $errorMessage = "Failed to modify the XML file on $ComputerName. Error: $_"
+        Write-Log $errorMessage
+        return $errorMessage
+    }
+}
+
 # Main script execution
 function Main {
     Write-Log "AdminToolbox is running..."

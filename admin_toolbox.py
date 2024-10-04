@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import platform
 import subprocess
 import tkinter as tk
-from tkinter import messagebox, simpledialog
+from tkinter import messagebox, simpledialog, filedialog
 import threading
 import time
 import logging
@@ -63,6 +63,26 @@ def read_xml_file(file_path, computer_name=None):
         log_action(f"Failed to read XML file: {file_path}{' on ' + computer_name if computer_name else ''}", logging.ERROR)
         return f"Error reading XML file: {str(e)}", None
 
+def write_xml_file(file_path, xml_content, computer_name=None):
+    if computer_name:
+        command = f"Invoke-Command -ComputerName {computer_name} -ScriptBlock {{ $xml = [xml]'{xml_content}'; $xml.Save('{file_path}') }}"
+    else:
+        command = f"$xml = [xml]'{xml_content}'; $xml.Save('{file_path}')"
+    
+    result = run_powershell_command(command)
+    log_action(f"XML file written: {file_path}{' on ' + computer_name if computer_name else ''}")
+    return result
+
+def modify_xml_file(file_path, xpath, new_value, computer_name=None):
+    if computer_name:
+        command = f"Invoke-Command -ComputerName {computer_name} -ScriptBlock {{ $xml = [xml](Get-Content -Path '{file_path}'); $node = $xml.SelectSingleNode('{xpath}'); if ($node) {{ $node.InnerText = '{new_value}'; $xml.Save('{file_path}'); 'XML file modified successfully.' }} else {{ 'XPath not found in the XML file.' }} }}"
+    else:
+        command = f"$xml = [xml](Get-Content -Path '{file_path}'); $node = $xml.SelectSingleNode('{xpath}'); if ($node) {{ $node.InnerText = '{new_value}'; $xml.Save('{file_path}'); 'XML file modified successfully.' }} else {{ 'XPath not found in the XML file.' }}"
+    
+    result = run_powershell_command(command)
+    log_action(f"XML file modified: {file_path}{' on ' + computer_name if computer_name else ''}")
+    return result
+
 def manage_remote_admin_permissions(username, action, computer_name):
     command = f"Manage-RemoteAdminPermissions -Username {username} -Action {action} -ComputerName {computer_name}"
     result = run_powershell_command(command)
@@ -79,7 +99,7 @@ class AdminToolboxGUI:
     def __init__(self, master):
         self.master = master
         master.title("AdminToolbox")
-        master.geometry("500x400")
+        master.geometry("500x500")
 
         self.computer_name = tk.StringVar(value="localhost")
         tk.Label(master, text="Computer Name:").pack(pady=5)
@@ -89,6 +109,8 @@ class AdminToolboxGUI:
             ("Registry Key Retrieval", self.registry_key_retrieval),
             ("Compare Versions", self.compare_versions),
             ("Read XML File", self.read_xml),
+            ("Write XML File", self.write_xml),
+            ("Modify XML File", self.modify_xml),
             ("Admin Permissions", self.admin_permissions),
             ("Execute Program", self.execute_program)
         ]
@@ -105,7 +127,7 @@ class AdminToolboxGUI:
         initial_state = f"AdminToolbox GUI initialized\n"
         initial_state += f"Remote computer management options available\n"
         initial_state += f"Current computer name: {self.computer_name.get()}\n"
-        initial_state += f"Available functions: Registry Key Retrieval, Compare Versions, Read XML File, Admin Permissions, Execute Program"
+        initial_state += f"Available functions: Registry Key Retrieval, Compare Versions, Read XML File, Write XML File, Modify XML File, Admin Permissions, Execute Program"
         print(initial_state)  # Print to console for shell feedback
         messagebox.showinfo("AdminToolbox Initial State", initial_state)
 
@@ -135,6 +157,33 @@ class AdminToolboxGUI:
             self.show_message("XML File Contents", f"{message}\n\n{content}")
         else:
             self.show_message("XML File Error", message)
+
+    def write_xml(self):
+        log_action("Write XML File button clicked")
+        file_path = filedialog.asksaveasfilename(defaultextension=".xml", filetypes=[("XML files", "*.xml")])
+        if file_path:
+            xml_content = simpledialog.askstring("Input", "Enter XML content:")
+            if xml_content:
+                result = write_xml_file(file_path, xml_content, self.computer_name.get())
+                self.show_message("Write XML File", result)
+            else:
+                self.show_message("Write XML File", "XML content is empty. Operation cancelled.")
+        else:
+            self.show_message("Write XML File", "No file selected. Operation cancelled.")
+
+    def modify_xml(self):
+        log_action("Modify XML File button clicked")
+        file_path = filedialog.askopenfilename(filetypes=[("XML files", "*.xml")])
+        if file_path:
+            xpath = simpledialog.askstring("Input", "Enter XPath to modify:")
+            new_value = simpledialog.askstring("Input", "Enter new value:")
+            if xpath and new_value:
+                result = modify_xml_file(file_path, xpath, new_value, self.computer_name.get())
+                self.show_message("Modify XML File", result)
+            else:
+                self.show_message("Modify XML File", "XPath or new value is empty. Operation cancelled.")
+        else:
+            self.show_message("Modify XML File", "No file selected. Operation cancelled.")
 
     def admin_permissions(self):
         log_action("Admin Permissions button clicked")
