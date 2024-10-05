@@ -6,7 +6,7 @@ import logging
 from datetime import datetime
 
 # Configure logging
-logging.basicConfig(filename='AdminToolbox.log', level=logging.INFO, 
+logging.basicConfig(filename='AdminToolbox.log', level=logging.DEBUG, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def log_action(action, level=logging.INFO):
@@ -45,19 +45,29 @@ def compare_version(current_version, target_version):
 
 def read_xml_file(file_path):
     try:
-        tree = ET.parse(file_path)
+        # Get the absolute path
+        abs_file_path = os.path.abspath(file_path)
+        logging.debug(f"Attempting to read XML file from absolute path: {abs_file_path}")
+        
+        if not os.path.exists(abs_file_path):
+            logging.error(f"File does not exist: {abs_file_path}")
+            return f"Error: XML file not found: {abs_file_path}", None
+        
+        logging.debug(f"File exists. Current working directory: {os.getcwd()}")
+        
+        tree = ET.parse(abs_file_path)
         root = tree.getroot()
         content = ET.tostring(root, encoding='unicode')
-        log_action(f"XML file read successfully: {file_path}")
+        log_action(f"XML file read successfully: {abs_file_path}")
         return "XML file read successfully.", content
     except FileNotFoundError:
-        log_action(f"XML file not found: {file_path}", logging.ERROR)
-        return f"Error: XML file not found: {file_path}", None
+        log_action(f"XML file not found: {abs_file_path}", logging.ERROR)
+        return f"Error: XML file not found: {abs_file_path}", None
     except ET.ParseError as e:
-        log_action(f"Failed to parse XML file: {file_path}", logging.ERROR)
+        log_action(f"Failed to parse XML file: {abs_file_path}", logging.ERROR)
         return f"Error parsing XML file: {str(e)}", None
     except Exception as e:
-        log_action(f"Failed to read XML file: {file_path}", logging.ERROR)
+        log_action(f"Failed to read XML file: {abs_file_path}", logging.ERROR)
         return f"Error reading XML file: {str(e)}", None
 
 def write_xml_file(file_path, xml_content):

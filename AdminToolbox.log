@@ -69,3 +69,4 @@ Program executed successfully.
 2024-10-05 06:58:05,362 - INFO - AdminToolbox application started
 2024-10-05 06:58:45,423 - INFO - Version comparison: Version matches
 2024-10-05 06:58:54,519 - INFO - AdminToolbox application exited
+2024-10-05 07:02:28,495 - ERROR - XML file not found: 'test_config.xml'
