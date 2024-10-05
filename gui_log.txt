@@ -32,3 +32,18 @@ AdminToolbox application started
 AdminToolbox application started
 AdminToolbox GUI initialized
 AdminToolbox GUI initialized
+AdminToolbox application started
+AdminToolbox application started
+AdminToolbox GUI initialized
+AdminToolbox GUI initialized
+AdminToolbox application started
+AdminToolbox application started
+AdminToolbox GUI initialized
+AdminToolbox GUI initialized
+AdminToolbox application started
+AdminToolbox application started
+AdminToolbox GUI initialized
+AdminToolbox GUI initialized
+Modify XML File button clicked
+Message shown: Modify XML File - No file selected. Operation cancelled.
+Compare Versions button clicked
