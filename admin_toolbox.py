@@ -2,11 +2,8 @@ import os
 import xml.etree.ElementTree as ET
 import platform
 import subprocess
-import tkinter as tk
-from tkinter import messagebox, simpledialog, filedialog
-import threading
-import time
 import logging
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(filename='AdminToolbox.log', level=logging.INFO, 
@@ -15,196 +12,156 @@ logging.basicConfig(filename='AdminToolbox.log', level=logging.INFO,
 def log_action(action, level=logging.INFO):
     # Log to GUI log file
     with open("gui_log.txt", "a") as log_file:
-        log_file.write(f"{action}\n")
+        log_file.write(f"{datetime.now()} - {action}\n")
     
     # Log to AdminToolbox.log
     logging.log(level, action)
 
-def run_powershell_command(command):
+def run_command(command):
     try:
-        result = subprocess.run(["powershell", "-Command", command], capture_output=True, text=True, check=True)
+        result = subprocess.run(command, capture_output=True, text=True, check=True, shell=True)
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
-        log_action(f"PowerShell command failed: {e}", logging.ERROR)
+        log_action(f"Command failed: {e}", logging.ERROR)
         return f"Error: {e.stderr.strip()}"
 
 def get_registry_key_value(key, value_name, computer_name=None):
-    if computer_name:
-        command = f"Invoke-Command -ComputerName {computer_name} -ScriptBlock {{ Get-ItemProperty -Path 'Registry::{key}' -Name {value_name} }}"
-    else:
-        command = f"Get-ItemProperty -Path 'Registry::{key}' -Name {value_name}"
+    if platform.system() != "Windows":
+        return "Registry operations are only supported on Windows systems."
     
-    result = run_powershell_command(command)
-    log_action(f"Registry key retrieval {'simulated ' if not computer_name else ''}for {key}\\{value_name}{' on ' + computer_name if computer_name else ''}")
+    if computer_name and computer_name.lower() != "localhost":
+        command = f"reg query \\\\{computer_name}\\{key} /v {value_name}"
+    else:
+        command = f"reg query {key} /v {value_name}"
+    
+    result = run_command(command)
+    log_action(f"Registry key retrieval for {key}\\{value_name}{' on ' + computer_name if computer_name else ''}")
     return result
 
-def compare_version(current_version, target_version, computer_name=None):
-    if computer_name:
-        command = f"Invoke-Command -ComputerName {computer_name} -ScriptBlock {{ '{current_version}' -eq '{target_version}' }}"
-    else:
-        command = f"'{current_version}' -eq '{target_version}'"
-    
-    result = run_powershell_command(command)
-    match_result = "Version matches" if result.lower() == "true" else "Version does not match"
-    log_action(f"Version comparison on {computer_name or 'local'}: {match_result}")
-    return f"{match_result}. Current: {current_version}, Target: {target_version}"
+def compare_version(current_version, target_version):
+    result = "Version matches" if current_version == target_version else "Version does not match"
+    log_action(f"Version comparison: {result}")
+    return f"{result}. Current: {current_version}, Target: {target_version}"
 
-def read_xml_file(file_path, computer_name=None):
-    if computer_name:
-        command = f"Invoke-Command -ComputerName {computer_name} -ScriptBlock {{ [xml](Get-Content -Path '{file_path}') }}"
-    else:
-        command = f"[xml](Get-Content -Path '{file_path}')"
-    
+def read_xml_file(file_path):
     try:
-        result = run_powershell_command(command)
-        log_action(f"XML file read successfully: {file_path}{' on ' + computer_name if computer_name else ''}")
-        return "XML file read successfully.", result
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+        content = ET.tostring(root, encoding='unicode')
+        log_action(f"XML file read successfully: {file_path}")
+        return "XML file read successfully.", content
+    except FileNotFoundError:
+        log_action(f"XML file not found: {file_path}", logging.ERROR)
+        return f"Error: XML file not found: {file_path}", None
+    except ET.ParseError as e:
+        log_action(f"Failed to parse XML file: {file_path}", logging.ERROR)
+        return f"Error parsing XML file: {str(e)}", None
     except Exception as e:
-        log_action(f"Failed to read XML file: {file_path}{' on ' + computer_name if computer_name else ''}", logging.ERROR)
+        log_action(f"Failed to read XML file: {file_path}", logging.ERROR)
         return f"Error reading XML file: {str(e)}", None
 
-def write_xml_file(file_path, xml_content, computer_name=None):
-    if computer_name:
-        command = f"Invoke-Command -ComputerName {computer_name} -ScriptBlock {{ $xml = [xml]'{xml_content}'; $xml.Save('{file_path}') }}"
-    else:
-        command = f"$xml = [xml]'{xml_content}'; $xml.Save('{file_path}')"
+def write_xml_file(file_path, xml_content):
+    try:
+        root = ET.fromstring(xml_content)
+        tree = ET.ElementTree(root)
+        tree.write(file_path, encoding="utf-8", xml_declaration=True)
+        log_action(f"XML file written: {file_path}")
+        return "XML file written successfully."
+    except ET.ParseError as e:
+        log_action(f"Failed to parse XML content", logging.ERROR)
+        return f"Error parsing XML content: {str(e)}"
+    except Exception as e:
+        log_action(f"Failed to write XML file: {file_path}", logging.ERROR)
+        return f"Error writing XML file: {str(e)}"
+
+def modify_xml_file(file_path, xpath, new_value):
+    try:
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+        for elem in root.findall(xpath):
+            elem.text = new_value
+            log_action(f"XML file modified: {file_path}")
+            tree.write(file_path, encoding="utf-8", xml_declaration=True)
+            return "XML file modified successfully."
+        return "XPath not found in the XML file."
+    except FileNotFoundError:
+        log_action(f"XML file not found: {file_path}", logging.ERROR)
+        return f"Error: XML file not found: {file_path}"
+    except ET.ParseError as e:
+        log_action(f"Failed to parse XML file: {file_path}", logging.ERROR)
+        return f"Error parsing XML file: {str(e)}"
+    except Exception as e:
+        log_action(f"Failed to modify XML file: {file_path}", logging.ERROR)
+        return f"Error modifying XML file: {str(e)}"
+
+def manage_admin_permissions(username, action):
+    if platform.system() != "Windows":
+        return "Admin permissions management is only supported on Windows systems."
     
-    result = run_powershell_command(command)
-    log_action(f"XML file written: {file_path}{' on ' + computer_name if computer_name else ''}")
+    command = f"net {action.lower()} Administrators {username}"
+    result = run_command(command)
+    log_action(f"Admin permissions {action.lower()}ed for {username}")
     return result
 
-def modify_xml_file(file_path, xpath, new_value, computer_name=None):
-    if computer_name:
-        command = f"Invoke-Command -ComputerName {computer_name} -ScriptBlock {{ $xml = [xml](Get-Content -Path '{file_path}'); $node = $xml.SelectSingleNode('{xpath}'); if ($node) {{ $node.InnerText = '{new_value}'; $xml.Save('{file_path}'); 'XML file modified successfully.' }} else {{ 'XPath not found in the XML file.' }} }}"
-    else:
-        command = f"$xml = [xml](Get-Content -Path '{file_path}'); $node = $xml.SelectSingleNode('{xpath}'); if ($node) {{ $node.InnerText = '{new_value}'; $xml.Save('{file_path}'); 'XML file modified successfully.' }} else {{ 'XPath not found in the XML file.' }}"
-    
-    result = run_powershell_command(command)
-    log_action(f"XML file modified: {file_path}{' on ' + computer_name if computer_name else ''}")
+def execute_program(program_name, args):
+    command = f"{program_name} {args}"
+    result = run_command(command)
+    log_action(f"Executed program {program_name}")
     return result
-
-def manage_remote_admin_permissions(username, action, computer_name):
-    command = f"Manage-RemoteAdminPermissions -Username {username} -Action {action} -ComputerName {computer_name}"
-    result = run_powershell_command(command)
-    log_action(f"Admin permissions {action.lower()}ed for {username} on {computer_name}")
-    return result
-
-def execute_remote_program(program_name, args, computer_name):
-    command = f"Execute-RemoteProgram -ProgramPath '{program_name}' -Arguments '{args}' -ComputerName {computer_name}"
-    result = run_powershell_command(command)
-    log_action(f"Executed program {program_name} on {computer_name}")
-    return result
-
-class AdminToolboxGUI:
-    def __init__(self, master):
-        self.master = master
-        master.title("AdminToolbox")
-        master.geometry("500x500")
-
-        self.computer_name = tk.StringVar(value="localhost")
-        tk.Label(master, text="Computer Name:").pack(pady=5)
-        tk.Entry(master, textvariable=self.computer_name).pack(pady=5)
-
-        self.buttons = [
-            ("Registry Key Retrieval", self.registry_key_retrieval),
-            ("Compare Versions", self.compare_versions),
-            ("Read XML File", self.read_xml),
-            ("Write XML File", self.write_xml),
-            ("Modify XML File", self.modify_xml),
-            ("Admin Permissions", self.admin_permissions),
-            ("Execute Program", self.execute_program)
-        ]
-
-        for text, command in self.buttons:
-            tk.Button(master, text=text, command=command).pack(pady=5)
-
-        log_action("AdminToolbox GUI initialized")
-        
-        # Display initial state
-        self.show_initial_state()
-
-    def show_initial_state(self):
-        initial_state = f"AdminToolbox GUI initialized\n"
-        initial_state += f"Remote computer management options available\n"
-        initial_state += f"Current computer name: {self.computer_name.get()}\n"
-        initial_state += f"Available functions: Registry Key Retrieval, Compare Versions, Read XML File, Write XML File, Modify XML File, Admin Permissions, Execute Program"
-        print(initial_state)  # Print to console for shell feedback
-        messagebox.showinfo("AdminToolbox Initial State", initial_state)
-
-    def show_message(self, title, message):
-        messagebox.showinfo(title, message)
-        log_action(f"Message shown: {title} - {message}")
-
-    def registry_key_retrieval(self):
-        log_action("Registry Key Retrieval button clicked")
-        key = "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"
-        value_name = "ProductName"
-        result = get_registry_key_value(key, value_name, self.computer_name.get())
-        self.show_message("Registry Key Retrieval", f"Retrieved value: {result}")
-
-    def compare_versions(self):
-        log_action("Compare Versions button clicked")
-        current_version = simpledialog.askstring("Input", "Enter current version:")
-        target_version = simpledialog.askstring("Input", "Enter target version:")
-        result = compare_version(current_version, target_version, self.computer_name.get())
-        self.show_message("Version Comparison", result)
-
-    def read_xml(self):
-        log_action("Read XML File button clicked")
-        file_path = simpledialog.askstring("Input", "Enter XML file path:")
-        message, content = read_xml_file(file_path, self.computer_name.get())
-        if content:
-            self.show_message("XML File Contents", f"{message}\n\n{content}")
-        else:
-            self.show_message("XML File Error", message)
-
-    def write_xml(self):
-        log_action("Write XML File button clicked")
-        file_path = filedialog.asksaveasfilename(defaultextension=".xml", filetypes=[("XML files", "*.xml")])
-        if file_path:
-            xml_content = simpledialog.askstring("Input", "Enter XML content:")
-            if xml_content:
-                result = write_xml_file(file_path, xml_content, self.computer_name.get())
-                self.show_message("Write XML File", result)
-            else:
-                self.show_message("Write XML File", "XML content is empty. Operation cancelled.")
-        else:
-            self.show_message("Write XML File", "No file selected. Operation cancelled.")
-
-    def modify_xml(self):
-        log_action("Modify XML File button clicked")
-        file_path = filedialog.askopenfilename(filetypes=[("XML files", "*.xml")])
-        if file_path:
-            xpath = simpledialog.askstring("Input", "Enter XPath to modify:")
-            new_value = simpledialog.askstring("Input", "Enter new value:")
-            if xpath and new_value:
-                result = modify_xml_file(file_path, xpath, new_value, self.computer_name.get())
-                self.show_message("Modify XML File", result)
-            else:
-                self.show_message("Modify XML File", "XPath or new value is empty. Operation cancelled.")
-        else:
-            self.show_message("Modify XML File", "No file selected. Operation cancelled.")
-
-    def admin_permissions(self):
-        log_action("Admin Permissions button clicked")
-        username = simpledialog.askstring("Input", "Enter username:")
-        action = simpledialog.askstring("Input", "Enter action (Grant/Revoke):")
-        result = manage_remote_admin_permissions(username, action, self.computer_name.get())
-        self.show_message("Admin Permissions", result)
-
-    def execute_program(self):
-        log_action("Execute Program button clicked")
-        program_name = simpledialog.askstring("Input", "Enter program path:")
-        args = simpledialog.askstring("Input", "Enter program arguments:")
-        result = execute_remote_program(program_name, args, self.computer_name.get())
-        self.show_message("Program Execution", result)
 
 def main():
     log_action("AdminToolbox application started")
-    root = tk.Tk()
-    AdminToolboxGUI(root)
-    root.mainloop()
-    log_action("AdminToolbox application closed")
+    while True:
+        print("\nAdminToolbox Menu:")
+        print("1. Get Registry Key Value")
+        print("2. Compare Versions")
+        print("3. Read XML File")
+        print("4. Write XML File")
+        print("5. Modify XML File")
+        print("6. Manage Admin Permissions")
+        print("7. Execute Program")
+        print("8. Exit")
+        
+        choice = input("Enter your choice (1-8): ")
+        
+        if choice == '1':
+            key = input("Enter registry key: ")
+            value_name = input("Enter value name: ")
+            result = get_registry_key_value(key, value_name)
+        elif choice == '2':
+            current_version = input("Enter current version: ")
+            target_version = input("Enter target version: ")
+            result = compare_version(current_version, target_version)
+        elif choice == '3':
+            file_path = input("Enter XML file path: ")
+            result, content = read_xml_file(file_path)
+            if content:
+                print(content)
+        elif choice == '4':
+            file_path = input("Enter XML file path: ")
+            xml_content = input("Enter XML content: ")
+            result = write_xml_file(file_path, xml_content)
+        elif choice == '5':
+            file_path = input("Enter XML file path: ")
+            xpath = input("Enter XPath: ")
+            new_value = input("Enter new value: ")
+            result = modify_xml_file(file_path, xpath, new_value)
+        elif choice == '6':
+            username = input("Enter username: ")
+            action = input("Enter action (add/remove): ")
+            result = manage_admin_permissions(username, action)
+        elif choice == '7':
+            program_name = input("Enter program name: ")
+            args = input("Enter arguments: ")
+            result = execute_program(program_name, args)
+        elif choice == '8':
+            log_action("AdminToolbox application exited")
+            print("Exiting AdminToolbox. Goodbye!")
+            break
+        else:
+            result = "Invalid choice. Please try again."
+        
+        print(f"\nResult: {result}")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

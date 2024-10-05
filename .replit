@@ -25,6 +25,7 @@ agentRequireRestartOnSave = false
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python admin_toolbox.py"
+waitForPort = 5000
 
 [[workflows.workflow]]
 name = "Run AdminToolbox GUI"

