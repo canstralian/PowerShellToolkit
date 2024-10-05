@@ -45,6 +45,10 @@ To use the GUI version of AdminToolbox:
 1. Ensure you have a web server running (e.g., Flask)
 2. Open your web browser and navigate to the appropriate URL (e.g., `http://localhost:5000`)
 
+## Deployment
+
+For detailed instructions on deploying AdminToolbox to a production environment, please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file.
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
