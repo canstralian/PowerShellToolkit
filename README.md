@@ -4,12 +4,13 @@ AdminToolbox is a comprehensive PowerShell and Python-based utility for managing
 
 ## Features
 
-- Registry Key Management
+- Registry Key Management (local and remote)
 - Version Comparison
 - XML File Operations (Read, Write, Modify)
-- User Admin Permissions Management
+- User Admin Permissions Management (local and remote)
 - Remote Program Execution
 - Logging Functionality
+- Graphical User Interface (GUI) for easier interaction
 
 ## Installation
 
@@ -38,6 +39,14 @@ python admin_toolbox.py
 
 Follow the on-screen prompts to use various features of the AdminToolbox.
 
+### PowerShell Script
+
+To use the PowerShell version of AdminToolbox:
+
+```
+pwsh AdminToolbox.ps1
+```
+
 ### Graphical User Interface
 
 To use the GUI version of AdminToolbox:
@@ -61,3 +70,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Thanks to all contributors who have helped shape AdminToolbox.
 - Special thanks to the open-source community for providing invaluable resources and inspiration.
+
+## Version
+
+Current version: 1.0.0
+
+## Support
+
+For any issues or feature requests, please open an issue on the GitHub repository.

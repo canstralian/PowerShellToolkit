@@ -73,3 +73,9 @@ AdminToolbox GUI initialized
 2024-10-05 02:55:35.546013 - AdminToolbox application started
 2024-10-05 02:56:07.835223 - AdminToolbox application started
 2024-10-05 02:56:38.256435 - AdminToolbox application started
+2024-10-05 03:39:34.474347 - AdminToolbox application started
+2024-10-05 03:39:34.488876 - AdminToolbox application started
+2024-10-05 05:36:30.399198 - AdminToolbox application started
+2024-10-05 05:36:30.399379 - AdminToolbox application started
+2024-10-05 05:36:58.682211 - Version comparison: Version does not match
+2024-10-05 05:37:49.145463 - XML file not found: "C:\Users\dejag\Downloads\VU23217_MidtownIT_Cyber_Security_Methodology_Recommendation_Template.docx"
