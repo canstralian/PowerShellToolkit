@@ -65,3 +65,7 @@ Program executed successfully.
 2024-10-05 05:36:30,399 - INFO - AdminToolbox application started
 2024-10-05 05:36:58,682 - INFO - Version comparison: Version does not match
 2024-10-05 05:37:49,145 - ERROR - XML file not found: "C:\Users\dejag\Downloads\VU23217_MidtownIT_Cyber_Security_Methodology_Recommendation_Template.docx"
+2024-10-05 06:58:05,362 - INFO - AdminToolbox application started
+2024-10-05 06:58:05,362 - INFO - AdminToolbox application started
+2024-10-05 06:58:45,423 - INFO - Version comparison: Version matches
+2024-10-05 06:58:54,519 - INFO - AdminToolbox application exited
