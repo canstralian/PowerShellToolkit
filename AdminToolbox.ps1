@@ -1,4 +1,11 @@
-# AdminToolbox.ps1
+#!/usr/bin/env pwsh
+
+# Check PowerShell version
+$minVersion = [Version]"7.4.0"
+if ($PSVersionTable.PSVersion -lt $minVersion) {
+    Write-Error "This script requires PowerShell $minVersion or later. Current version is $($PSVersionTable.PSVersion)."
+    exit 1
+}
 
 # Function to write log messages
 function Write-Log {
@@ -218,7 +225,7 @@ function Modify-XmlFile {
             param($FilePath, $XPath, $NewValue)
             $xml = [xml](Get-Content -Path $FilePath)
             $node = $xml.SelectSingleNode($XPath)
-            if ($node -ne $null) {
+            if ($null -ne $node) {
                 $node.InnerText = $NewValue
                 $xml.Save($FilePath)
                 return "XML file modified successfully."
