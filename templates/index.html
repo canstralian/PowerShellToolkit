@@ -86,6 +86,25 @@
                     document.getElementById('result').textContent = `Error: ${error.message}`;
                 });
         }
+
+        // Check if the system is Windows and disable registry key option if not
+        function checkWindowsSystem() {
+            axios.get('/api/is_windows')
+                .then(response => {
+                    const isWindows = response.data.is_windows;
+                    const registryOption = document.querySelector('option[value="registry_key"]');
+                    if (!isWindows) {
+                        registryOption.disabled = true;
+                        registryOption.textContent += " (Windows only)";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error checking Windows system:", error);
+                });
+        }
+
+        // Call the function when the page loads
+        window.onload = checkWindowsSystem;
     </script>
 </body>
 </html>

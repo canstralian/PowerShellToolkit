@@ -4,6 +4,9 @@ import platform
 import subprocess
 import logging
 from datetime import datetime
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(__name__)
 
 # Configure logging
 logging.basicConfig(filename='AdminToolbox.log', level=logging.DEBUG, 
@@ -27,7 +30,16 @@ def run_command(command):
 
 def get_registry_key_value(key, value_name, computer_name=None):
     if platform.system() != "Windows":
-        return "Registry operations are only supported on Windows systems."
+        message = (
+            "Registry operations are only supported on Windows systems. "
+            "For non-Windows systems, consider using alternative methods:\n"
+            "- Linux: Use the 'sysctl' command or read from /proc filesystem\n"
+            "- macOS: Use the 'defaults' command\n"
+            "For cross-platform compatibility, consider storing configuration "
+            "in XML or JSON files instead of the registry."
+        )
+        log_action(f"Registry operation attempted on non-Windows system: {platform.system()}", logging.WARNING)
+        return message
     
     if computer_name and computer_name.lower() != "localhost":
         command = f"reg query \\\\{computer_name}\\{key} /v {value_name}"
@@ -119,59 +131,55 @@ def execute_program(program_name, args):
     log_action(f"Executed program {program_name}")
     return result
 
-def main():
-    log_action("AdminToolbox application started")
-    while True:
-        print("\nAdminToolbox Menu:")
-        print("1. Get Registry Key Value")
-        print("2. Compare Versions")
-        print("3. Read XML File")
-        print("4. Write XML File")
-        print("5. Modify XML File")
-        print("6. Manage Admin Permissions")
-        print("7. Execute Program")
-        print("8. Exit")
-        
-        choice = input("Enter your choice (1-8): ")
-        
-        if choice == '1':
-            key = input("Enter registry key: ")
-            value_name = input("Enter value name: ")
-            result = get_registry_key_value(key, value_name)
-        elif choice == '2':
-            current_version = input("Enter current version: ")
-            target_version = input("Enter target version: ")
-            result = compare_version(current_version, target_version)
-        elif choice == '3':
-            file_path = input("Enter XML file path: ")
-            result, content = read_xml_file(file_path)
-            if content:
-                print(content)
-        elif choice == '4':
-            file_path = input("Enter XML file path: ")
-            xml_content = input("Enter XML content: ")
-            result = write_xml_file(file_path, xml_content)
-        elif choice == '5':
-            file_path = input("Enter XML file path: ")
-            xpath = input("Enter XPath: ")
-            new_value = input("Enter new value: ")
-            result = modify_xml_file(file_path, xpath, new_value)
-        elif choice == '6':
-            username = input("Enter username: ")
-            action = input("Enter action (add/remove): ")
-            result = manage_admin_permissions(username, action)
-        elif choice == '7':
-            program_name = input("Enter program name: ")
-            args = input("Enter arguments: ")
-            result = execute_program(program_name, args)
-        elif choice == '8':
-            log_action("AdminToolbox application exited")
-            print("Exiting AdminToolbox. Goodbye!")
-            break
-        else:
-            result = "Invalid choice. Please try again."
-        
-        print(f"\nResult: {result}")
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/api/is_windows', methods=['GET'])
+def is_windows():
+    return jsonify({"is_windows": platform.system() == "Windows"})
+
+@app.route('/api/registry_key', methods=['POST'])
+def api_registry_key():
+    data = request.json
+    result = get_registry_key_value(data['key'], data['value_name'], data['computer_name'])
+    return jsonify({"result": result})
+
+@app.route('/api/compare_version', methods=['POST'])
+def api_compare_version():
+    data = request.json
+    result = compare_version(data['current_version'], data['target_version'])
+    return jsonify({"result": result})
+
+@app.route('/api/read_xml', methods=['POST'])
+def api_read_xml():
+    data = request.json
+    result, content = read_xml_file(data['file_path'])
+    return jsonify({"result": result, "content": content})
+
+@app.route('/api/write_xml', methods=['POST'])
+def api_write_xml():
+    data = request.json
+    result = write_xml_file(data['file_path'], data['xml_content'])
+    return jsonify({"result": result})
+
+@app.route('/api/modify_xml', methods=['POST'])
+def api_modify_xml():
+    data = request.json
+    result = modify_xml_file(data['file_path'], data['xpath'], data['new_value'])
+    return jsonify({"result": result})
+
+@app.route('/api/admin_permissions', methods=['POST'])
+def api_admin_permissions():
+    data = request.json
+    result = manage_admin_permissions(data['username'], data['action'])
+    return jsonify({"result": result})
+
+@app.route('/api/execute_program', methods=['POST'])
+def api_execute_program():
+    data = request.json
+    result = execute_program(data['program_name'], data['args'])
+    return jsonify({"result": result})
 
 if __name__ == '__main__':
-    main()
+    app.run(host='0.0.0.0', port=5000, debug=True)
