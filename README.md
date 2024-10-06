@@ -1,20 +1,32 @@
 # AdminToolbox
 
-AdminToolbox is a comprehensive PowerShell and Python-based utility for managing registry keys, users, XML files, version checking, and program execution. It provides both a command-line interface and a graphical user interface for ease of use.
+AdminToolbox is a comprehensive project management and automation tool designed to streamline project workflows, integrate data from various sources, and provide insightful reporting and resource optimization.
 
 ## Features
 
-- Registry Key Management (local and remote)
-- Version Comparison
-- XML File Operations (Read, Write, Modify)
-- User Admin Permissions Management (local and remote)
-- Remote Program Execution
-- Logging Functionality
-- Graphical User Interface (GUI) for easier interaction
-- Random Execution Delays
-- Uptime Checks
-- Self-Regeneration Capability
-- Enhanced Data Exfiltration
+### Project Management
+- Task creation, assignment, and tracking
+- Project progress monitoring
+- Deadline management and overdue task identification
+
+### Data Integration (Coming Soon)
+- Connect to various data sources (e.g., databases, APIs)
+- Consolidate information from multiple sources
+
+### Reporting Engine (Coming Soon)
+- Generate customizable reports based on project data and resource utilization
+
+### Resource Allocation and Optimization (Coming Soon)
+- Suggest optimal resource distribution based on project needs and availability
+
+### Intelligent Task Scheduling (Coming Soon)
+- Prioritize and assign tasks based on various factors (e.g., deadlines, resource availability, dependencies)
+
+### Enhanced Security Features (Coming Soon)
+- Ensure compliance with data protection regulations
+
+### Real-time Dashboard (Coming Soon)
+- Provide insights into project progress, resource utilization, and key performance indicators
 
 ## Installation
 
@@ -33,52 +45,37 @@ AdminToolbox is a comprehensive PowerShell and Python-based utility for managing
 
 ## Usage
 
-### Command-line Interface
-
-Run the AdminToolbox using Python:
+To use the AdminToolbox, run the following command:
 
 ```
 python admin_toolbox.py
 ```
 
-Follow the on-screen prompts to use various features of the AdminToolbox.
+For project management functionality, you can import and use the `ProjectManagement` class from `project_management.py`.
 
-### PowerShell Script
+Example usage:
 
-To use the PowerShell version of AdminToolbox:
+```python
+from project_management import ProjectManagement
 
+pm = ProjectManagement()
+
+# Create a project
+project = pm.create_project("Website Redesign", "Redesign the company website")
+
+# Create tasks
+task1 = pm.create_task(project.id, "Design mockups", "Create initial design mockups", due_date, "Designer")
+task2 = pm.create_task(project.id, "Develop frontend", "Implement the frontend based on mockups", due_date, "Frontend Developer")
+
+# Update task status
+pm.update_task_status(project.id, task1.id, "In Progress")
+
+# Get project tasks
+project_tasks = pm.get_project_tasks(project.id)
+
+# Get overdue tasks
+overdue_tasks = pm.get_overdue_tasks()
 ```
-pwsh AdminToolbox.ps1
-```
-
-### Graphical User Interface
-
-To use the GUI version of AdminToolbox:
-
-1. Ensure you have a web server running (e.g., Flask)
-2. Open your web browser and navigate to the appropriate URL (e.g., `http://localhost:5000`)
-
-## New Features
-
-### Random Execution Delays
-
-The tool now includes random delays between operations to enhance stealth and unpredictability.
-
-### Uptime Checks
-
-Tasks are only executed when the system has been up for a specified duration, adding an extra layer of stealth.
-
-### Self-Regeneration
-
-AdminToolbox can now download and replace itself with a new version, helping to maintain functionality and avoid detection.
-
-### Enhanced Data Exfiltration
-
-Improved data handling and transmission capabilities have been added for more secure operations.
-
-## Deployment
-
-For detailed instructions on deploying AdminToolbox to a production environment, please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file.
 
 ## Contributing
 
@@ -88,15 +85,13 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Roadmap
 
-- Thanks to all contributors who have helped shape AdminToolbox.
-- Special thanks to the open-source community for providing invaluable resources and inspiration.
-
-## Version
-
-Current version: 1.1.0
-
-## Support
+1. Implement data integration module
+2. Develop reporting engine
+3. Design resource allocation and optimization system
+4. Implement intelligent task scheduling
+5. Enhance security features
+6. Create real-time dashboard
 
 For any issues or feature requests, please open an issue on the GitHub repository.
