@@ -1,73 +1,211 @@
-2024-10-04 21:17:52,200 - INFO - AdminToolbox application started
-2024-10-04 21:17:52,247 - INFO - AdminToolbox GUI initialized
-2024-10-04 21:17:54,248 - INFO - Registry Key Retrieval button clicked
-2024-10-04 21:17:54,248 - INFO - Registry key retrieval simulated for HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName
-2024-10-04 21:17:54,268 - INFO - Compare Versions button clicked
-2024-10-04 21:17:54,269 - INFO - Version comparison: Version does not match
-2024-10-04 21:17:54,278 - INFO - Read XML File button clicked
-2024-10-04 21:17:54,278 - ERROR - XML file not found: example.xml
-2024-10-04 21:17:54,286 - INFO - Admin Permissions button clicked
-2024-10-04 21:17:54,287 - INFO - Admin permissions granted to testuser
-2024-10-04 21:17:54,295 - INFO - Execute Program button clicked
-2024-10-04 21:17:54,295 - INFO - Simulating execution of program: test_program.exe
-With arguments: --verbose
-Program executed successfully.
-2024-10-04 21:19:50,515 - INFO - AdminToolbox application started
-2024-10-04 21:19:50,583 - INFO - AdminToolbox GUI initialized
-2024-10-04 22:40:16,846 - INFO - AdminToolbox application started
-2024-10-04 22:40:16,846 - INFO - AdminToolbox application started
-2024-10-04 22:40:17,149 - INFO - AdminToolbox GUI initialized
-2024-10-04 22:40:17,150 - INFO - AdminToolbox GUI initialized
-2024-10-04 22:44:17,912 - INFO - AdminToolbox application started
-2024-10-04 22:44:17,912 - INFO - AdminToolbox application started
-2024-10-04 22:44:17,958 - INFO - AdminToolbox GUI initialized
-2024-10-04 22:44:17,958 - INFO - AdminToolbox GUI initialized
-2024-10-04 22:47:04,033 - INFO - AdminToolbox application started
-2024-10-04 22:47:04,033 - INFO - AdminToolbox application started
-2024-10-04 22:47:04,080 - INFO - AdminToolbox GUI initialized
-2024-10-04 22:47:04,080 - INFO - AdminToolbox GUI initialized
-2024-10-05 00:33:55,873 - INFO - AdminToolbox application started
-2024-10-05 00:33:55,873 - INFO - AdminToolbox application started
-2024-10-05 00:33:56,244 - INFO - AdminToolbox GUI initialized
-2024-10-05 00:33:56,244 - INFO - AdminToolbox GUI initialized
-2024-10-05 00:34:50,580 - INFO - Modify XML File button clicked
-2024-10-05 00:35:01,018 - INFO - Message shown: Modify XML File - No file selected. Operation cancelled.
-2024-10-05 00:35:03,286 - INFO - Compare Versions button clicked
-2024-10-05 00:37:34,267 - INFO - AdminToolbox application started
-2024-10-05 00:37:34,314 - INFO - AdminToolbox GUI initialized
-2024-10-05 00:38:16,903 - INFO - AdminToolbox application started
-2024-10-05 00:38:16,950 - INFO - AdminToolbox GUI initialized
-2024-10-05 00:39:07,938 - INFO - AdminToolbox application started
-2024-10-05 00:39:07,985 - INFO - AdminToolbox GUI initialized
-2024-10-05 00:44:42,316 - INFO - AdminToolbox application started
-2024-10-05 00:45:12,610 - INFO - AdminToolbox application started
-2024-10-05 00:45:44,890 - INFO - AdminToolbox application started
-2024-10-05 00:46:27,090 - INFO - AdminToolbox application started
-2024-10-05 00:46:58,369 - INFO - AdminToolbox application started
-2024-10-05 00:47:30,652 - INFO - AdminToolbox application started
-2024-10-05 00:48:00,993 - INFO - AdminToolbox application started
-2024-10-05 00:48:33,278 - INFO - AdminToolbox application started
-2024-10-05 00:49:05,565 - INFO - AdminToolbox application started
-2024-10-05 01:05:19,189 - INFO - AdminToolbox application started
-2024-10-05 01:05:19,257 - INFO - AdminToolbox application started
-2024-10-05 01:54:58,103 - INFO - AdminToolbox application started
-2024-10-05 01:54:58,111 - INFO - AdminToolbox application started
-2024-10-05 01:55:49,659 - INFO - Version comparison: Version does not match
-2024-10-05 02:17:43,918 - INFO - AdminToolbox application started
-2024-10-05 02:17:43,931 - INFO - AdminToolbox application started
-2024-10-05 02:55:03,246 - INFO - AdminToolbox application started
-2024-10-05 02:55:35,546 - INFO - AdminToolbox application started
-2024-10-05 02:56:07,835 - INFO - AdminToolbox application started
-2024-10-05 02:56:38,256 - INFO - AdminToolbox application started
-2024-10-05 03:39:34,479 - INFO - AdminToolbox application started
-2024-10-05 03:39:34,488 - INFO - AdminToolbox application started
-2024-10-05 05:36:30,399 - INFO - AdminToolbox application started
-2024-10-05 05:36:30,399 - INFO - AdminToolbox application started
-2024-10-05 05:36:58,682 - INFO - Version comparison: Version does not match
-2024-10-05 05:37:49,145 - ERROR - XML file not found: "C:\Users\dejag\Downloads\VU23217_MidtownIT_Cyber_Security_Methodology_Recommendation_Template.docx"
-2024-10-05 06:58:05,362 - INFO - AdminToolbox application started
-2024-10-05 06:58:05,362 - INFO - AdminToolbox application started
-2024-10-05 06:58:45,423 - INFO - Version comparison: Version matches
-2024-10-05 06:58:54,519 - INFO - AdminToolbox application exited
-2024-10-05 07:02:28,495 - ERROR - XML file not found: 'test_config.xml'
-2024-10-05 07:07:47,165 - INFO - XML file read successfully: test_config.xml
+2024-10-06 09:15:16,130 - INFO - Random delay of 19 seconds applied
+2024-10-06 09:15:16,130 - INFO - System uptime: 947.8856666666667 minutes
+2024-10-06 09:15:16,132 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 09:15:16,703 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 09:15:16,704 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 09:15:16,730 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.57:5000
+2024-10-06 09:15:16,730 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 09:15:16,731 - INFO -  * Restarting with stat
+2024-10-06 09:17:48,373 - INFO - Random delay of 51 seconds applied
+2024-10-06 09:17:48,374 - INFO - System uptime: 950.423 minutes
+2024-10-06 09:17:48,376 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 09:17:48,952 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 09:17:48,953 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 09:17:48,966 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.57:5000
+2024-10-06 09:17:48,966 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 09:17:48,967 - INFO -  * Restarting with stat
+2024-10-06 09:17:49,159 - INFO - AdminToolbox script started
+2024-10-06 09:17:49,160 - ERROR - An error occurred: name 'start_random_delay' is not defined
+2024-10-06 09:17:49,160 - ERROR - Exception details:
+Traceback (most recent call last):
+  File "/home/runner/workspace/admin_toolbox.py", line 41, in <module>
+    start_random_delay()
+    ^^^^^^^^^^^^^^^^^^
+NameError: name 'start_random_delay' is not defined
+2024-10-06 09:17:49,160 - INFO - AdminToolbox script finished
+2024-10-06 09:43:16,598 - INFO - AdminToolbox script started
+2024-10-06 09:43:16,600 - INFO - AdminToolbox script started
+2024-10-06 09:43:16,601 - INFO - AdminToolbox script started
+2024-10-06 09:43:30,600 - INFO - Random delay of 14 seconds applied
+2024-10-06 09:43:30,600 - INFO - System uptime: 976.1268333333334 minutes
+2024-10-06 09:43:30,600 - INFO - System uptime: 976.1268333333334 minutes
+2024-10-06 09:43:30,601 - INFO - Attempting self-regeneration
+2024-10-06 09:43:30,603 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 09:43:31,142 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 09:43:31,143 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 09:43:31,143 - INFO - Starting Flask application
+2024-10-06 09:43:31,164 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.81:5000
+2024-10-06 09:43:31,164 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 09:43:31,166 - INFO -  * Restarting with stat
+2024-10-06 09:43:31,358 - INFO - AdminToolbox script started
+2024-10-06 09:43:49,358 - INFO - Random delay of 18 seconds applied
+2024-10-06 09:43:49,359 - INFO - System uptime: 976.4393333333334 minutes
+2024-10-06 09:43:49,359 - INFO - System uptime: 976.4393333333334 minutes
+2024-10-06 09:43:49,359 - INFO - Attempting self-regeneration
+2024-10-06 09:43:49,361 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 09:43:49,840 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 09:43:49,841 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 09:43:49,841 - INFO - Starting Flask application
+2024-10-06 09:43:49,850 - WARNING -  * Debugger is active!
+2024-10-06 09:43:49,853 - INFO -  * Debugger PIN: 915-840-114
+2024-10-06 09:43:49,881 - INFO - 172.31.196.81 - - [06/Oct/2024 09:43:49] "GET / HTTP/1.1" 200 -
+2024-10-06 09:44:14,599 - INFO - Random delay of 58 seconds applied
+2024-10-06 09:44:14,599 - INFO - System uptime: 976.86 minutes
+2024-10-06 09:44:14,600 - INFO - System uptime: 976.86 minutes
+2024-10-06 09:44:14,600 - INFO - Attempting self-regeneration
+2024-10-06 09:44:14,601 - INFO - Random delay of 58 seconds applied
+2024-10-06 09:44:14,602 - INFO - System uptime: 976.8601666666667 minutes
+2024-10-06 09:44:14,602 - INFO - System uptime: 976.8601666666667 minutes
+2024-10-06 09:44:14,602 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 09:44:14,602 - INFO - Attempting self-regeneration
+2024-10-06 09:44:14,604 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 09:44:15,078 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 09:44:15,079 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 09:44:15,079 - INFO - Starting Flask application
+2024-10-06 09:44:15,088 - INFO - AdminToolbox script finished
+2024-10-06 09:44:15,185 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 09:44:15,185 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 09:44:15,186 - INFO - Starting Flask application
+2024-10-06 09:44:15,195 - INFO - AdminToolbox script finished
+2024-10-06 09:44:25,084 - INFO - 172.31.196.81 - - [06/Oct/2024 09:44:25] "GET / HTTP/1.1" 200 -
+2024-10-06 12:14:37,126 - INFO - AdminToolbox script started
+2024-10-06 12:15:27,129 - INFO - Random delay of 50 seconds applied
+2024-10-06 12:15:27,129 - INFO - System uptime: 1128.0688333333335 minutes
+2024-10-06 12:15:27,130 - INFO - System uptime: 1128.0688333333335 minutes
+2024-10-06 12:15:27,130 - INFO - Attempting self-regeneration
+2024-10-06 12:15:27,132 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 12:15:27,700 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 12:15:27,700 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 12:15:27,701 - INFO - Starting Flask application
+2024-10-06 12:15:27,724 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.68:5000
+2024-10-06 12:15:27,724 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 12:15:27,725 - INFO -  * Restarting with stat
+2024-10-06 12:15:27,923 - INFO - AdminToolbox script started
+2024-10-06 12:16:07,924 - INFO - Random delay of 40 seconds applied
+2024-10-06 12:16:07,924 - INFO - System uptime: 1128.7488333333333 minutes
+2024-10-06 12:16:07,924 - INFO - System uptime: 1128.7488333333333 minutes
+2024-10-06 12:16:07,925 - INFO - Attempting self-regeneration
+2024-10-06 12:16:07,927 - DEBUG - Starting new HTTP connection (1): example.com:80
+2024-10-06 12:16:08,419 - DEBUG - http://example.com:80 "GET /admin_toolbox.py HTTP/11" 500 433
+2024-10-06 12:16:08,420 - ERROR - Failed to download new script: HTTP 500
+2024-10-06 12:16:08,420 - INFO - Starting Flask application
+2024-10-06 12:16:08,430 - WARNING -  * Debugger is active!
+2024-10-06 12:16:08,431 - INFO -  * Debugger PIN: 914-733-924
+2024-10-06 12:16:08,456 - INFO - 172.31.196.68 - - [06/Oct/2024 12:16:08] "GET / HTTP/1.1" 200 -
+2024-10-06 12:16:10,516 - INFO -  * Detected change in '/home/runner/workspace/admin_toolbox.py', reloading
+2024-10-06 12:16:10,516 - INFO - AdminToolbox script finished
+2024-10-06 12:16:10,558 - INFO -  * Restarting with stat
+2024-10-06 12:16:10,758 - INFO - AdminToolbox script started
+2024-10-06 12:16:12,385 - INFO - AdminToolbox script started
+2024-10-06 12:16:53,385 - INFO - Random delay of 41 seconds applied
+2024-10-06 12:16:53,386 - INFO - System uptime: 1129.5065 minutes
+2024-10-06 12:16:53,386 - INFO - System uptime: 1129.5065 minutes
+2024-10-06 12:16:53,386 - INFO - Skipping self-regeneration (feature disabled)
+2024-10-06 12:16:53,386 - INFO - Starting Flask application
+2024-10-06 12:16:53,402 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.68:5000
+2024-10-06 12:16:53,402 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 12:16:53,403 - INFO -  * Restarting with stat
+2024-10-06 12:16:53,596 - INFO - AdminToolbox script started
+2024-10-06 12:17:40,597 - INFO - Random delay of 47 seconds applied
+2024-10-06 12:17:40,597 - INFO - System uptime: 1130.2933333333335 minutes
+2024-10-06 12:17:40,597 - INFO - System uptime: 1130.2933333333335 minutes
+2024-10-06 12:17:40,598 - INFO - Skipping self-regeneration (feature disabled)
+2024-10-06 12:17:40,598 - INFO - Starting Flask application
+2024-10-06 12:17:40,608 - WARNING -  * Debugger is active!
+2024-10-06 12:17:40,609 - INFO -  * Debugger PIN: 743-541-370
+2024-10-06 12:17:40,635 - INFO - 172.31.196.68 - - [06/Oct/2024 12:17:40] "GET / HTTP/1.1" 200 -
+2024-10-06 12:18:14,338 - INFO -  * Detected change in '/home/runner/workspace/admin_toolbox.py', reloading
+2024-10-06 12:18:14,338 - INFO - AdminToolbox script finished
+2024-10-06 12:18:14,375 - INFO -  * Restarting with stat
+2024-10-06 12:18:14,573 - INFO - AdminToolbox script started
+2024-10-06 12:18:15,674 - INFO - AdminToolbox script started
+2024-10-06 12:18:34,675 - INFO - Random delay of 19 seconds applied
+2024-10-06 12:18:34,675 - INFO - System uptime: 1131.1946666666665 minutes
+2024-10-06 12:18:34,675 - INFO - System uptime: 1131.1946666666665 minutes
+2024-10-06 12:18:34,675 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 12:18:34,676 - INFO - Starting Flask application
+2024-10-06 12:18:34,689 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.68:5000
+2024-10-06 12:18:34,690 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 12:18:34,690 - INFO -  * Restarting with stat
+2024-10-06 12:18:34,886 - INFO - AdminToolbox script started
+2024-10-06 14:32:13,553 - INFO - AdminToolbox script started
+2024-10-06 14:32:13,553 - INFO - AdminToolbox script started
+2024-10-06 14:32:13,554 - INFO - AdminToolbox script started
+2024-10-06 14:32:37,554 - INFO - Random delay of 24 seconds applied
+2024-10-06 14:32:37,555 - INFO - System uptime: 1034.7068333333334 minutes
+2024-10-06 14:32:37,555 - INFO - System uptime: 1034.7068333333334 minutes
+2024-10-06 14:32:37,555 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:32:37,556 - INFO - Starting Flask application
+2024-10-06 14:32:37,578 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.47:5000
+2024-10-06 14:32:37,578 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 14:32:37,579 - INFO -  * Restarting with stat
+2024-10-06 14:32:37,797 - INFO - AdminToolbox script started
+2024-10-06 14:33:02,554 - INFO - Random delay of 49 seconds applied
+2024-10-06 14:33:02,555 - INFO - System uptime: 1035.1235000000001 minutes
+2024-10-06 14:33:02,555 - INFO - System uptime: 1035.1235000000001 minutes
+2024-10-06 14:33:02,555 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:33:02,556 - INFO - Starting Flask application
+2024-10-06 14:33:02,566 - INFO - AdminToolbox script finished
+2024-10-06 14:33:09,554 - INFO - Random delay of 56 seconds applied
+2024-10-06 14:33:09,555 - INFO - System uptime: 1035.2401666666667 minutes
+2024-10-06 14:33:09,555 - INFO - System uptime: 1035.2401666666667 minutes
+2024-10-06 14:33:09,555 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:33:09,555 - INFO - Starting Flask application
+2024-10-06 14:33:09,565 - INFO - AdminToolbox script finished
+2024-10-06 14:33:19,797 - INFO - Random delay of 42 seconds applied
+2024-10-06 14:33:19,798 - INFO - System uptime: 1035.411 minutes
+2024-10-06 14:33:19,798 - INFO - System uptime: 1035.411 minutes
+2024-10-06 14:33:19,798 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:33:19,799 - INFO - Starting Flask application
+2024-10-06 14:33:19,809 - WARNING -  * Debugger is active!
+2024-10-06 14:33:19,811 - INFO -  * Debugger PIN: 273-715-655
+2024-10-06 14:33:19,840 - INFO - 172.31.196.47 - - [06/Oct/2024 14:33:19] "GET / HTTP/1.1" 200 -
+2024-10-06 14:33:19,840 - INFO - 172.31.196.47 - - [06/Oct/2024 14:33:19] "GET /?initialPath=&id=:rt2: HTTP/1.1" 200 -
+2024-10-06 14:33:55,226 - INFO - 172.31.196.47 - - [06/Oct/2024 14:33:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-10-06 14:35:02,286 - INFO - 172.31.196.47 - - [06/Oct/2024 14:35:02] "GET /?initialPath=&id=:rt2: HTTP/1.1" 200 -
+2024-10-06 14:36:49,449 - INFO -  * Detected change in '/home/runner/workspace/admin_toolbox.py', reloading
+2024-10-06 14:36:49,450 - INFO - AdminToolbox script finished
+2024-10-06 14:36:49,486 - INFO -  * Restarting with stat
+2024-10-06 14:36:49,711 - INFO - AdminToolbox script started
+2024-10-06 14:37:08,919 - INFO - AdminToolbox script started
+2024-10-06 14:37:15,920 - INFO - Random delay of 7 seconds applied
+2024-10-06 14:37:15,920 - INFO - System uptime: 1039.3463333333334 minutes
+2024-10-06 14:37:15,920 - INFO - System uptime: 1039.3463333333334 minutes
+2024-10-06 14:37:15,920 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:37:15,920 - INFO - Starting Flask application
+2024-10-06 14:37:15,942 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.196.47:5000
+2024-10-06 14:37:15,942 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 14:37:15,943 - INFO -  * Restarting with stat
+2024-10-06 14:37:16,168 - INFO - AdminToolbox script started
+2024-10-06 14:37:53,169 - INFO - Random delay of 37 seconds applied
+2024-10-06 14:37:53,169 - INFO - System uptime: 1039.9671666666666 minutes
+2024-10-06 14:37:53,169 - INFO - System uptime: 1039.9671666666666 minutes
+2024-10-06 14:37:53,169 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:37:53,169 - INFO - Starting Flask application
+2024-10-06 14:37:53,180 - WARNING -  * Debugger is active!
+2024-10-06 14:37:53,181 - INFO -  * Debugger PIN: 130-509-718
+2024-10-06 14:37:53,213 - INFO - 172.31.196.47 - - [06/Oct/2024 14:37:53] "GET / HTTP/1.1" 200 -

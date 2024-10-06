@@ -15,6 +15,14 @@ args = "Run AdminToolbox"
 task = "workflow.run"
 args = "Run AdminToolbox GUI"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Run AdminToolbox Tests"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Debug AdminToolbox"
+
 [[workflows.workflow]]
 name = "Run AdminToolbox"
 author = "agent"
@@ -38,8 +46,34 @@ agentRequireRestartOnSave = false
 task = "shell.exec"
 args = "python admin_toolbox.py"
 
+[[workflows.workflow]]
+name = "Run AdminToolbox Tests"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python -m pytest tests/test_admin_toolbox.py"
+
+[[workflows.workflow]]
+name = "Debug AdminToolbox"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python admin_toolbox.py"
+
 [nix]
 channel = "stable-24_05"
 
 [deployment]
 run = ["sh", "-c", "python admin_toolbox.py"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80

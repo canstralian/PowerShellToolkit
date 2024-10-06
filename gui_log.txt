@@ -85,3 +85,128 @@ AdminToolbox GUI initialized
 2024-10-05 06:58:54.519206 - AdminToolbox application exited
 2024-10-05 07:02:28.495449 - XML file not found: 'test_config.xml'
 2024-10-05 07:07:47.165441 - XML file read successfully: test_config.xml
+2024-10-06 07:01:38.187874 - Random delay of 10 seconds applied
+2024-10-06 07:01:38.189246 - System uptime: 797.9018333333333 minutes
+2024-10-06 07:01:38.685935 - Failed to download new script: HTTP 500
+2024-10-06 07:01:55.911317 - Random delay of 17 seconds applied
+2024-10-06 07:01:55.911676 - System uptime: 798.1971666666667 minutes
+2024-10-06 07:01:56.403503 - Failed to download new script: HTTP 500
+2024-10-06 07:02:14.187711 - Random delay of 46 seconds applied
+2024-10-06 07:02:14.188062 - System uptime: 798.5018333333334 minutes
+2024-10-06 07:02:14.681449 - Failed to download new script: HTTP 500
+2024-10-06 09:15:16.129857 - Random delay of 19 seconds applied
+2024-10-06 09:15:16.130281 - System uptime: 947.8856666666667 minutes
+2024-10-06 09:15:16.703942 - Failed to download new script: HTTP 500
+2024-10-06 09:17:48.373543 - Random delay of 51 seconds applied
+2024-10-06 09:17:48.373940 - System uptime: 950.423 minutes
+2024-10-06 09:17:48.953427 - Failed to download new script: HTTP 500
+2024-10-06 09:17:49.159793 - AdminToolbox script started
+2024-10-06 09:17:49.160038 - An error occurred: name 'start_random_delay' is not defined
+2024-10-06 09:17:49.160454 - AdminToolbox script finished
+2024-10-06 09:43:16.598244 - AdminToolbox script started
+2024-10-06 09:43:16.600063 - AdminToolbox script started
+2024-10-06 09:43:16.600062 - AdminToolbox script started
+2024-10-06 09:43:30.600416 - Random delay of 14 seconds applied
+2024-10-06 09:43:30.600743 - System uptime: 976.1268333333334 minutes
+2024-10-06 09:43:30.600900 - System uptime: 976.1268333333334 minutes
+2024-10-06 09:43:30.601127 - Attempting self-regeneration
+2024-10-06 09:43:31.143272 - Failed to download new script: HTTP 500
+2024-10-06 09:43:31.143582 - Starting Flask application
+2024-10-06 09:43:31.358339 - AdminToolbox script started
+2024-10-06 09:43:49.358664 - Random delay of 18 seconds applied
+2024-10-06 09:43:49.358986 - System uptime: 976.4393333333334 minutes
+2024-10-06 09:43:49.359129 - System uptime: 976.4393333333334 minutes
+2024-10-06 09:43:49.359254 - Attempting self-regeneration
+2024-10-06 09:43:49.841310 - Failed to download new script: HTTP 500
+2024-10-06 09:43:49.841626 - Starting Flask application
+2024-10-06 09:44:14.599547 - Random delay of 58 seconds applied
+2024-10-06 09:44:14.599857 - System uptime: 976.86 minutes
+2024-10-06 09:44:14.600027 - System uptime: 976.86 minutes
+2024-10-06 09:44:14.600156 - Attempting self-regeneration
+2024-10-06 09:44:14.601678 - Random delay of 58 seconds applied
+2024-10-06 09:44:14.602044 - System uptime: 976.8601666666667 minutes
+2024-10-06 09:44:14.602192 - System uptime: 976.8601666666667 minutes
+2024-10-06 09:44:14.602327 - Attempting self-regeneration
+2024-10-06 09:44:15.079369 - Failed to download new script: HTTP 500
+2024-10-06 09:44:15.079605 - Starting Flask application
+2024-10-06 09:44:15.088632 - AdminToolbox script finished
+2024-10-06 09:44:15.185880 - Failed to download new script: HTTP 500
+2024-10-06 09:44:15.186176 - Starting Flask application
+2024-10-06 09:44:15.195304 - AdminToolbox script finished
+2024-10-06 12:14:37.126197 - AdminToolbox script started
+2024-10-06 12:15:27.128940 - Random delay of 50 seconds applied
+2024-10-06 12:15:27.129765 - System uptime: 1128.0688333333335 minutes
+2024-10-06 12:15:27.130000 - System uptime: 1128.0688333333335 minutes
+2024-10-06 12:15:27.130244 - Attempting self-regeneration
+2024-10-06 12:15:27.700570 - Failed to download new script: HTTP 500
+2024-10-06 12:15:27.701000 - Starting Flask application
+2024-10-06 12:15:27.923790 - AdminToolbox script started
+2024-10-06 12:16:07.924216 - Random delay of 40 seconds applied
+2024-10-06 12:16:07.924543 - System uptime: 1128.7488333333333 minutes
+2024-10-06 12:16:07.924735 - System uptime: 1128.7488333333333 minutes
+2024-10-06 12:16:07.924950 - Attempting self-regeneration
+2024-10-06 12:16:08.419929 - Failed to download new script: HTTP 500
+2024-10-06 12:16:08.420287 - Starting Flask application
+2024-10-06 12:16:10.516405 - AdminToolbox script finished
+2024-10-06 12:16:10.758824 - AdminToolbox script started
+2024-10-06 12:16:12.385289 - AdminToolbox script started
+2024-10-06 12:16:53.385687 - Random delay of 41 seconds applied
+2024-10-06 12:16:53.386114 - System uptime: 1129.5065 minutes
+2024-10-06 12:16:53.386334 - System uptime: 1129.5065 minutes
+2024-10-06 12:16:53.386614 - Skipping self-regeneration (feature disabled)
+2024-10-06 12:16:53.386842 - Starting Flask application
+2024-10-06 12:16:53.596828 - AdminToolbox script started
+2024-10-06 12:17:40.597221 - Random delay of 47 seconds applied
+2024-10-06 12:17:40.597580 - System uptime: 1130.2933333333335 minutes
+2024-10-06 12:17:40.597793 - System uptime: 1130.2933333333335 minutes
+2024-10-06 12:17:40.598063 - Skipping self-regeneration (feature disabled)
+2024-10-06 12:17:40.598272 - Starting Flask application
+2024-10-06 12:18:14.338872 - AdminToolbox script finished
+2024-10-06 12:18:14.573635 - AdminToolbox script started
+2024-10-06 12:18:15.674015 - AdminToolbox script started
+2024-10-06 12:18:34.674994 - Random delay of 19 seconds applied
+2024-10-06 12:18:34.675317 - System uptime: 1131.1946666666665 minutes
+2024-10-06 12:18:34.675515 - System uptime: 1131.1946666666665 minutes
+2024-10-06 12:18:34.675719 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 12:18:34.675958 - Starting Flask application
+2024-10-06 12:18:34.886693 - AdminToolbox script started
+2024-10-06 14:32:13.553422 - AdminToolbox script started
+2024-10-06 14:32:13.553473 - AdminToolbox script started
+2024-10-06 14:32:13.553667 - AdminToolbox script started
+2024-10-06 14:32:37.554845 - Random delay of 24 seconds applied
+2024-10-06 14:32:37.555300 - System uptime: 1034.7068333333334 minutes
+2024-10-06 14:32:37.555576 - System uptime: 1034.7068333333334 minutes
+2024-10-06 14:32:37.555845 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:32:37.556030 - Starting Flask application
+2024-10-06 14:32:37.797468 - AdminToolbox script started
+2024-10-06 14:33:02.554737 - Random delay of 49 seconds applied
+2024-10-06 14:33:02.555166 - System uptime: 1035.1235000000001 minutes
+2024-10-06 14:33:02.555367 - System uptime: 1035.1235000000001 minutes
+2024-10-06 14:33:02.555671 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:33:02.555987 - Starting Flask application
+2024-10-06 14:33:02.566751 - AdminToolbox script finished
+2024-10-06 14:33:09.554730 - Random delay of 56 seconds applied
+2024-10-06 14:33:09.555092 - System uptime: 1035.2401666666667 minutes
+2024-10-06 14:33:09.555267 - System uptime: 1035.2401666666667 minutes
+2024-10-06 14:33:09.555400 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:33:09.555568 - Starting Flask application
+2024-10-06 14:33:09.565277 - AdminToolbox script finished
+2024-10-06 14:33:19.797874 - Random delay of 42 seconds applied
+2024-10-06 14:33:19.798295 - System uptime: 1035.411 minutes
+2024-10-06 14:33:19.798550 - System uptime: 1035.411 minutes
+2024-10-06 14:33:19.798760 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:33:19.799119 - Starting Flask application
+2024-10-06 14:36:49.450150 - AdminToolbox script finished
+2024-10-06 14:36:49.711614 - AdminToolbox script started
+2024-10-06 14:37:08.919716 - AdminToolbox script started
+2024-10-06 14:37:15.920144 - Random delay of 7 seconds applied
+2024-10-06 14:37:15.920483 - System uptime: 1039.3463333333334 minutes
+2024-10-06 14:37:15.920660 - System uptime: 1039.3463333333334 minutes
+2024-10-06 14:37:15.920802 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:37:15.920940 - Starting Flask application
+2024-10-06 14:37:16.168779 - AdminToolbox script started
+2024-10-06 14:37:53.169137 - Random delay of 37 seconds applied
+2024-10-06 14:37:53.169439 - System uptime: 1039.9671666666666 minutes
+2024-10-06 14:37:53.169566 - System uptime: 1039.9671666666666 minutes
+2024-10-06 14:37:53.169678 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 14:37:53.169784 - Starting Flask application

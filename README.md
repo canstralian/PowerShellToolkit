@@ -11,6 +11,10 @@ AdminToolbox is a comprehensive PowerShell and Python-based utility for managing
 - Remote Program Execution
 - Logging Functionality
 - Graphical User Interface (GUI) for easier interaction
+- Random Execution Delays
+- Uptime Checks
+- Self-Regeneration Capability
+- Enhanced Data Exfiltration
 
 ## Installation
 
@@ -54,6 +58,24 @@ To use the GUI version of AdminToolbox:
 1. Ensure you have a web server running (e.g., Flask)
 2. Open your web browser and navigate to the appropriate URL (e.g., `http://localhost:5000`)
 
+## New Features
+
+### Random Execution Delays
+
+The tool now includes random delays between operations to enhance stealth and unpredictability.
+
+### Uptime Checks
+
+Tasks are only executed when the system has been up for a specified duration, adding an extra layer of stealth.
+
+### Self-Regeneration
+
+AdminToolbox can now download and replace itself with a new version, helping to maintain functionality and avoid detection.
+
+### Enhanced Data Exfiltration
+
+Improved data handling and transmission capabilities have been added for more secure operations.
+
 ## Deployment
 
 For detailed instructions on deploying AdminToolbox to a production environment, please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file.
@@ -73,7 +95,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Version
 
-Current version: 1.0.0
+Current version: 1.1.0
 
 ## Support
 

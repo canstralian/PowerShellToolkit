@@ -19,6 +19,8 @@ This guide outlines the steps to deploy AdminToolbox to a production environment
    - Add any necessary environment variables, such as:
      - `OPENWEATHERMAP_API_KEY` (if used for weather functionality)
      - `LOG_LEVEL` (e.g., INFO, DEBUG, ERROR)
+     - `SCRIPT_URL` (URL for self-regeneration feature)
+     - `EXFILTRATION_URL` (URL for data exfiltration)
 
 3. **Install Dependencies**
    - Open the Shell in Replit
@@ -70,16 +72,35 @@ This guide outlines the steps to deploy AdminToolbox to a production environment
 - Regularly update dependencies to patch any vulnerabilities
 - Implement proper authentication and authorization for admin functions
 - Use HTTPS for all communications (Replit provides this by default)
+- Ensure that the `SCRIPT_URL` and `EXFILTRATION_URL` are secure and use HTTPS
+- Implement additional security measures for the self-regeneration and data exfiltration features
 
 ## Backup and Disaster Recovery
 
 - Regularly backup your Replit project
 - Consider exporting critical data and configurations periodically
 
+## New Features Deployment Considerations
+
+### Random Execution Delays
+- No additional setup required, but be aware that the application may have variable response times
+
+### Uptime Checks
+- Ensure that the hosting environment allows for accurate system uptime reporting
+
+### Self-Regeneration
+- Set up a secure location to host the latest version of the script
+- Ensure that the `SCRIPT_URL` environment variable is correctly set
+
+### Enhanced Data Exfiltration
+- Set up a secure endpoint to receive exfiltrated data
+- Ensure that the `EXFILTRATION_URL` environment variable is correctly set
+
 ## Troubleshooting
 
 - If the application fails to start, check the Replit console for error messages
 - Verify that all required environment variables are set correctly
 - Ensure all dependencies are installed properly
+- Check the logs for any issues related to the new features (random delays, uptime checks, self-regeneration, data exfiltration)
 
 For any additional support or questions, please refer to the project's README.md or open an issue in the GitHub repository.

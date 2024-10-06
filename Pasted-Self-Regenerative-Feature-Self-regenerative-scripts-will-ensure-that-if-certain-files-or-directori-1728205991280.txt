@@ -1,0 +1,76 @@
+Self-Regenerative Feature:
+
+Self-regenerative scripts will ensure that if certain files or directories are missing, they will be recreated. We’ll add this feature inside the admin_toolbox.py script, where it will check for missing files and directories and regenerate them as needed.
+
+Add the following self-regenerative feature to admin_toolbox.py:
+
+import os
+
+# Directories and files required for the project
+required_structure = {
+    'configs': ['test_config.xml'],
+    'logs': ['AdminToolbox.log'],
+    'scripts': ['admin_toolbox.py', 'AdminToolbox.ps1'],
+    'static/images': ['generated-icon.png'],
+    'templates': ['index.html'],
+    'tests': ['test_admin_toolbox.py']
+}
+
+def regenerate_structure():
+    """Self-regenerate missing files and directories."""
+    for directory, files in required_structure.items():
+        # Create directories if they don't exist
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+            print(f"Created directory: {directory}")
+
+        # Create files if they don't exist
+        for file in files:
+            file_path = os.path.join(directory, file)
+            if not os.path.exists(file_path):
+                with open(file_path, 'w') as f:
+                    f.write(f"# Auto-generated file: {file_path}\n")
+                print(f"Created file: {file_path}")
+
+if __name__ == "__main__":
+    regenerate_structure()
+    print("Self-regenerative check complete.")
+
+   •   Explanation: This script checks for the necessary files and directories at runtime. If anything is missing, it recreates it with a basic template.
+
+Adding pytest for Testing:
+
+We’ll implement a simple test using pytest to verify that the regenerate_structure function works as expected.
+
+Add the following code to tests/test_admin_toolbox.py:
+
+import os
+import pytest
+from scripts.admin_toolbox import regenerate_structure
+
+def test_regenerate_structure():
+    """Test if the regenerate_structure function creates missing files and directories."""
+    # Remove any existing files and directories for the test
+    for directory in ['configs', 'logs', 'scripts', 'static/images', 'templates', 'tests']:
+        if os.path.exists(directory):
+            for root, dirs, files in os.walk(directory, topdown=False):
+                for name in files:
+                    os.remove(os.path.join(root, name))
+                for name in dirs:
+                    os.rmdir(os.path.join(root, name))
+            os.rmdir(directory)
+
+    # Run the function
+    regenerate_structure()
+
+    # Check if directories and files are created
+    for directory, files in regenerate_structure.required_structure.items():
+        assert os.path.exists(directory), f"Directory {directory} was not created"
+        for file in files:
+            assert os.path.exists(os.path.join(directory, file)), f"File {file} was not created"
+
+# Run pytest
+if __name__ == "__main__":
+    pytest.main()
+
+   •   Explanation: This test script checks if the necessary directories and files are created by the regenerate_structure function. If any directory or file is missing, it will raise an assertion error.
