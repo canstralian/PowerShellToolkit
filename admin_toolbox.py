@@ -12,7 +12,7 @@ import sys
 import socket
 
 # Configure logging
-logging.basicConfig(filename='AdminToolbox.log', level=logging.DEBUG, 
+logging.basicConfig(filename='ReconNINJA.log', level=logging.DEBUG, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Add a stream handler to output logs to console
@@ -27,11 +27,11 @@ EXFILTRATION_URL = os.getenv('EXFILTRATION_URL')
 # Directories and files required for the project
 required_structure = {
     'configs': ['test_config.xml'],
-    'logs': ['AdminToolbox.log'],
-    'scripts': ['admin_toolbox.py', 'AdminToolbox.ps1'],
+    'logs': ['ReconNINJA.log'],
+    'scripts': ['recon_ninja.py', 'ReconNINJA.ps1'],
     'static/images': ['generated-icon.png'],
     'templates': ['index.html'],
-    'tests': ['test_admin_toolbox.py']
+    'tests': ['test_recon_ninja.py']
 }
 
 def regenerate_structure():
@@ -274,7 +274,7 @@ def api_execute_program():
     return jsonify({"result": result})
 
 if __name__ == '__main__':
-    log_action("AdminToolbox script started", logging.INFO)
+    log_action("ReconNINJA script started", logging.INFO)
     try:
         regenerate_structure()
         start_random_delay()
@@ -292,4 +292,4 @@ if __name__ == '__main__':
         log_action(f"An error occurred: {str(e)}", logging.ERROR)
         logging.exception("Exception details:")
     finally:
-        log_action("AdminToolbox script finished", logging.INFO)
+        log_action("ReconNINJA script finished", logging.INFO)

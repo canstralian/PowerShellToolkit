@@ -1,6 +1,6 @@
-# AdminToolbox
+# ReconNINJ@
 
-AdminToolbox is a comprehensive project management and automation tool designed to streamline project workflows, integrate data from various sources, and provide insightful reporting and resource optimization.
+ReconNINJ@ is a comprehensive project management and automation tool designed to streamline project workflows, integrate data from various sources, and provide insightful reporting and resource optimization.
 
 ## Features
 
@@ -32,11 +32,11 @@ AdminToolbox is a comprehensive project management and automation tool designed 
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/AdminToolbox.git
+   git clone https://github.com/yourusername/ReconNINJA.git
    ```
 2. Navigate to the project directory:
    ```
-   cd AdminToolbox
+   cd ReconNINJA
    ```
 3. Install the required dependencies:
    ```
@@ -45,10 +45,10 @@ AdminToolbox is a comprehensive project management and automation tool designed 
 
 ## Usage
 
-To use the AdminToolbox, run the following command:
+To use ReconNINJ@, run the following command:
 
 ```
-python admin_toolbox.py
+python recon_ninja.py
 ```
 
 For project management functionality, you can import and use the `ProjectManagement` class from `project_management.py`.

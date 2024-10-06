@@ -1,6 +1,6 @@
-# Deploying AdminToolbox to Production
+# Deploying ReconNINJ@ to Production
 
-This guide outlines the steps to deploy AdminToolbox to a production environment using Replit.
+This guide outlines the steps to deploy ReconNINJ@ to a production environment using Replit.
 
 ## Prerequisites
 
@@ -10,8 +10,8 @@ This guide outlines the steps to deploy AdminToolbox to a production environment
 
 ## Deployment Steps
 
-1. **Fork the AdminToolbox Repository**
-   - Go to the AdminToolbox repository on Replit
+1. **Fork the ReconNINJ@ Repository**
+   - Go to the ReconNINJ@ repository on Replit
    - Click on the "Fork" button to create your own copy of the project
 
 2. **Configure Environment Variables**
@@ -33,7 +33,7 @@ This guide outlines the steps to deploy AdminToolbox to a production environment
    - In the Replit interface, click on the "Run" button at the top
    - Set the run command to:
      ```
-     python admin_toolbox.py
+     python recon_ninja.py
      ```
 
 5. **Configure Replit for PowerShell (if needed)**
@@ -41,15 +41,15 @@ This guide outlines the steps to deploy AdminToolbox to a production environment
    - Create or modify the `.replit` file in the project root with the following content:
      ```
      language = "powershell"
-     run = "pwsh AdminToolbox.ps1"
+     run = "pwsh ReconNINJA.ps1"
      ```
 
 6. **Start the Application**
-   - Click the "Run" button in Replit to start the AdminToolbox application
+   - Click the "Run" button in Replit to start the ReconNINJ@ application
 
 7. **Access the Web Interface**
    - Once the application is running, Replit will provide a URL to access the web interface
-   - Click on the provided URL to open the AdminToolbox GUI in a new tab
+   - Click on the provided URL to open the ReconNINJ@ GUI in a new tab
 
 8. **Set Up Continuous Deployment (Optional)**
    - Enable GitHub integration in your Replit project
@@ -58,7 +58,7 @@ This guide outlines the steps to deploy AdminToolbox to a production environment
 
 ## Monitoring and Logging
 
-- Logs are stored in `AdminToolbox.log` and `gui_log.txt`
+- Logs are stored in `ReconNINJA.log` and `gui_log.txt`
 - Monitor these logs for any errors or issues
 - Consider implementing additional monitoring tools as needed
 

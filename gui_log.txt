@@ -229,3 +229,14 @@ AdminToolbox GUI initialized
 2024-10-06 16:57:29.519912 - AdminToolbox script finished
 2024-10-06 16:57:29.759985 - AdminToolbox script started
 2024-10-06 16:57:34.311275 - Random delay of 10 seconds applied
+2024-10-06 16:58:18.760472 - Random delay of 49 seconds applied
+2024-10-06 16:58:18.760879 - System uptime: 1180.3936666666666 minutes
+2024-10-06 16:58:18.761133 - System uptime: 1180.3936666666666 minutes
+2024-10-06 16:58:18.761333 - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 16:58:18.761551 - Starting Flask application on port 43659
+2024-10-06 17:05:16.062394 - AdminToolbox script finished
+2024-10-06 17:05:16.320694 - ReconNINJA script started
+2024-10-06 17:05:16.321112 - Created file: logs/ReconNINJA.log
+2024-10-06 17:05:16.321445 - Created file: scripts/recon_ninja.py
+2024-10-06 17:05:16.321714 - Created file: scripts/ReconNINJA.ps1
+2024-10-06 17:05:16.321959 - Created file: tests/test_recon_ninja.py

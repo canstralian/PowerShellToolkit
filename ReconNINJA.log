@@ -1,0 +1,5 @@
+2024-10-06 17:05:16,320 - INFO - ReconNINJA script started
+2024-10-06 17:05:16,321 - INFO - Created file: logs/ReconNINJA.log
+2024-10-06 17:05:16,321 - INFO - Created file: scripts/recon_ninja.py
+2024-10-06 17:05:16,321 - INFO - Created file: scripts/ReconNINJA.ps1
+2024-10-06 17:05:16,322 - INFO - Created file: tests/test_recon_ninja.py
