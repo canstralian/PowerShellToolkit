@@ -3,3 +3,561 @@
 2024-10-06 17:05:16,321 - INFO - Created file: scripts/recon_ninja.py
 2024-10-06 17:05:16,321 - INFO - Created file: scripts/ReconNINJA.ps1
 2024-10-06 17:05:16,322 - INFO - Created file: tests/test_recon_ninja.py
+2024-10-06 17:06:16,322 - INFO - Random delay of 60 seconds applied
+2024-10-06 17:06:16,322 - INFO - System uptime: 1188.3529999999998 minutes
+2024-10-06 17:06:16,323 - INFO - System uptime: 1188.3529999999998 minutes
+2024-10-06 17:06:16,323 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:06:16,323 - INFO - Starting Flask application on port 60387
+2024-10-06 17:06:16,335 - WARNING -  * Debugger is active!
+2024-10-06 17:06:16,337 - INFO -  * Debugger PIN: 119-479-636
+2024-10-06 17:06:16,366 - INFO - 172.31.196.47 - - [06/Oct/2024 17:06:16] "GET / HTTP/1.1" 200 -
+2024-10-06 17:07:53,420 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:07:53,420 - INFO - ReconNINJA script finished
+2024-10-06 17:07:53,678 - INFO - ReconNINJA script started
+2024-10-06 17:07:58,678 - INFO - Random delay of 5 seconds applied
+2024-10-06 17:07:58,679 - INFO - System uptime: 1190.059 minutes
+2024-10-06 17:07:58,679 - INFO - System uptime: 1190.059 minutes
+2024-10-06 17:07:58,679 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:07:58,679 - INFO - Starting Flask application on port 39011
+2024-10-06 17:07:58,690 - WARNING -  * Debugger is active!
+2024-10-06 17:07:58,691 - INFO -  * Debugger PIN: 102-594-273
+2024-10-06 17:08:01,644 - INFO - ReconNINJA script started
+2024-10-06 17:08:21,644 - INFO - Random delay of 20 seconds applied
+2024-10-06 17:08:21,644 - INFO - System uptime: 1190.4416666666666 minutes
+2024-10-06 17:08:21,645 - INFO - System uptime: 1190.4416666666666 minutes
+2024-10-06 17:08:21,645 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:08:21,645 - INFO - Starting Flask application on port 58801
+2024-10-06 17:08:21,659 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:58801
+ * Running on http://172.31.196.47:58801
+2024-10-06 17:08:21,660 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:08:21,660 - INFO -  * Restarting with stat
+2024-10-06 17:08:21,876 - INFO - ReconNINJA script started
+2024-10-06 17:08:33,927 - INFO - ReconNINJA script started
+2024-10-06 17:08:58,928 - INFO - Random delay of 25 seconds applied
+2024-10-06 17:08:58,928 - INFO - System uptime: 1191.0631666666666 minutes
+2024-10-06 17:08:58,928 - INFO - System uptime: 1191.0631666666666 minutes
+2024-10-06 17:08:58,929 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:08:58,929 - INFO - Starting Flask application on port 56871
+2024-10-06 17:08:58,947 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:56871
+ * Running on http://172.31.196.47:56871
+2024-10-06 17:08:58,947 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:08:58,948 - INFO -  * Restarting with stat
+2024-10-06 17:08:59,164 - INFO - ReconNINJA script started
+2024-10-06 17:09:09,265 - INFO - ReconNINJA script started
+2024-10-06 17:09:27,266 - INFO - Random delay of 18 seconds applied
+2024-10-06 17:09:27,266 - INFO - System uptime: 1191.5353333333333 minutes
+2024-10-06 17:09:27,266 - INFO - System uptime: 1191.5353333333333 minutes
+2024-10-06 17:09:27,267 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:09:27,267 - INFO - Starting Flask application on port 44221
+2024-10-06 17:09:27,282 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:44221
+ * Running on http://172.31.196.47:44221
+2024-10-06 17:09:27,282 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:09:27,283 - INFO -  * Restarting with stat
+2024-10-06 17:09:27,515 - INFO - ReconNINJA script started
+2024-10-06 17:09:36,605 - INFO - ReconNINJA script started
+2024-10-06 17:09:37,410 - INFO - ReconNINJA script started
+2024-10-06 17:09:53,410 - INFO - Random delay of 16 seconds applied
+2024-10-06 17:09:53,410 - INFO - System uptime: 1191.9711666666667 minutes
+2024-10-06 17:09:53,411 - INFO - System uptime: 1191.9711666666667 minutes
+2024-10-06 17:09:53,411 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:09:53,411 - INFO - Starting Flask application on port 49547
+2024-10-06 17:09:53,426 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:49547
+ * Running on http://172.31.196.47:49547
+2024-10-06 17:09:53,426 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:09:53,427 - INFO -  * Restarting with stat
+2024-10-06 17:09:53,653 - INFO - ReconNINJA script started
+2024-10-06 17:09:55,605 - INFO - Random delay of 19 seconds applied
+2024-10-06 17:09:55,605 - INFO - System uptime: 1192.0076666666669 minutes
+2024-10-06 17:09:55,606 - INFO - System uptime: 1192.0076666666669 minutes
+2024-10-06 17:09:55,606 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:09:55,606 - INFO - Starting Flask application on port 39293
+2024-10-06 17:09:55,622 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:39293
+ * Running on http://172.31.196.47:39293
+2024-10-06 17:09:55,622 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:09:55,623 - INFO -  * Restarting with stat
+2024-10-06 17:09:55,850 - INFO - ReconNINJA script started
+2024-10-06 17:09:59,654 - INFO - Random delay of 6 seconds applied
+2024-10-06 17:09:59,654 - INFO - System uptime: 1192.0751666666665 minutes
+2024-10-06 17:09:59,654 - INFO - System uptime: 1192.0751666666665 minutes
+2024-10-06 17:09:59,655 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:09:59,655 - INFO - Starting Flask application on port 37813
+2024-10-06 17:09:59,666 - WARNING -  * Debugger is active!
+2024-10-06 17:09:59,667 - INFO -  * Debugger PIN: 921-841-794
+2024-10-06 17:10:10,850 - INFO - Random delay of 15 seconds applied
+2024-10-06 17:10:10,851 - INFO - System uptime: 1192.2618333333335 minutes
+2024-10-06 17:10:10,851 - INFO - System uptime: 1192.2618333333335 minutes
+2024-10-06 17:10:10,851 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:10:10,851 - INFO - Starting Flask application on port 40621
+2024-10-06 17:10:10,866 - WARNING -  * Debugger is active!
+2024-10-06 17:10:10,868 - INFO -  * Debugger PIN: 160-212-890
+2024-10-06 17:10:56,987 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:10:56,988 - INFO - ReconNINJA script finished
+2024-10-06 17:10:57,021 - INFO -  * Restarting with stat
+2024-10-06 17:10:57,059 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:10:57,059 - INFO - ReconNINJA script finished
+2024-10-06 17:10:57,092 - INFO -  * Restarting with stat
+2024-10-06 17:10:57,260 - INFO - ReconNINJA script started
+2024-10-06 17:10:57,371 - INFO - ReconNINJA script started
+2024-10-06 17:11:06,260 - INFO - Random delay of 9 seconds applied
+2024-10-06 17:11:06,261 - INFO - System uptime: 1193.1853333333333 minutes
+2024-10-06 17:11:06,261 - INFO - System uptime: 1193.1853333333333 minutes
+2024-10-06 17:11:06,261 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:11:06,261 - INFO - Starting Flask application on port 36861
+2024-10-06 17:11:06,271 - WARNING -  * Debugger is active!
+2024-10-06 17:11:06,272 - INFO -  * Debugger PIN: 143-763-352
+2024-10-06 17:11:06,302 - INFO - 172.31.196.47 - - [06/Oct/2024 17:11:06] "GET / HTTP/1.1" 200 -
+2024-10-06 17:11:30,371 - INFO - Random delay of 33 seconds applied
+2024-10-06 17:11:30,371 - INFO - System uptime: 1193.5871666666667 minutes
+2024-10-06 17:11:30,372 - INFO - System uptime: 1193.5871666666667 minutes
+2024-10-06 17:11:30,372 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:11:30,372 - INFO - Starting Flask application on port 44005
+2024-10-06 17:11:30,382 - WARNING -  * Debugger is active!
+2024-10-06 17:11:30,383 - INFO -  * Debugger PIN: 238-990-905
+2024-10-06 17:12:21,996 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:12:21,997 - INFO - ReconNINJA script finished
+2024-10-06 17:12:22,031 - INFO -  * Restarting with stat
+2024-10-06 17:12:22,248 - INFO - ReconNINJA script started
+2024-10-06 17:12:22,618 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:12:22,619 - INFO - ReconNINJA script finished
+2024-10-06 17:12:22,650 - INFO -  * Restarting with stat
+2024-10-06 17:12:22,874 - INFO - ReconNINJA script started
+2024-10-06 17:12:50,248 - INFO - Random delay of 28 seconds applied
+2024-10-06 17:12:50,249 - INFO - System uptime: 1194.9185 minutes
+2024-10-06 17:12:50,249 - INFO - System uptime: 1194.9185 minutes
+2024-10-06 17:12:50,249 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:12:50,249 - INFO - Starting Flask application on port 46153
+2024-10-06 17:12:50,260 - WARNING -  * Debugger is active!
+2024-10-06 17:12:50,261 - INFO -  * Debugger PIN: 125-264-668
+2024-10-06 17:12:52,875 - INFO - Random delay of 30 seconds applied
+2024-10-06 17:12:52,875 - INFO - System uptime: 1194.9621666666667 minutes
+2024-10-06 17:12:52,875 - INFO - System uptime: 1194.9621666666667 minutes
+2024-10-06 17:12:52,875 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:12:52,876 - INFO - Starting Flask application on port 35775
+2024-10-06 17:12:52,886 - WARNING -  * Debugger is active!
+2024-10-06 17:12:52,887 - INFO -  * Debugger PIN: 833-649-328
+2024-10-06 17:13:27,747 - INFO - 172.31.196.47 - - [06/Oct/2024 17:13:27] "[33mPOST /api/usb_hid_pentest HTTP/1.1[0m" 404 -
+2024-10-06 17:13:32,749 - INFO - 172.31.196.47 - - [06/Oct/2024 17:13:32] "[33mPOST /api/firmware_analysis HTTP/1.1[0m" 404 -
+2024-10-06 17:13:55,766 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:13:55,767 - INFO - ReconNINJA script finished
+2024-10-06 17:13:55,801 - INFO -  * Restarting with stat
+2024-10-06 17:13:56,023 - INFO - ReconNINJA script started
+2024-10-06 17:13:56,326 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:13:56,327 - INFO - ReconNINJA script finished
+2024-10-06 17:13:56,364 - INFO -  * Restarting with stat
+2024-10-06 17:13:56,584 - INFO - ReconNINJA script started
+2024-10-06 17:14:06,584 - INFO - Random delay of 10 seconds applied
+2024-10-06 17:14:06,584 - INFO - System uptime: 1196.1906666666666 minutes
+2024-10-06 17:14:06,585 - INFO - System uptime: 1196.1906666666666 minutes
+2024-10-06 17:14:06,585 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:14:06,585 - INFO - Starting Flask application on port 57295
+2024-10-06 17:14:06,596 - WARNING -  * Debugger is active!
+2024-10-06 17:14:06,597 - INFO -  * Debugger PIN: 116-227-363
+2024-10-06 17:14:24,024 - INFO - Random delay of 28 seconds applied
+2024-10-06 17:14:24,024 - INFO - System uptime: 1196.4813333333334 minutes
+2024-10-06 17:14:24,024 - INFO - System uptime: 1196.4813333333334 minutes
+2024-10-06 17:14:24,025 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:14:24,025 - INFO - Starting Flask application on port 39179
+2024-10-06 17:14:24,036 - WARNING -  * Debugger is active!
+2024-10-06 17:14:24,037 - INFO -  * Debugger PIN: 369-230-375
+2024-10-06 17:16:21,634 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:16:21,635 - INFO - ReconNINJA script finished
+2024-10-06 17:16:21,675 - INFO -  * Restarting with stat
+2024-10-06 17:16:21,677 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:16:21,677 - INFO - ReconNINJA script finished
+2024-10-06 17:16:21,712 - INFO -  * Restarting with stat
+2024-10-06 17:16:21,936 - INFO - ReconNINJA script started
+2024-10-06 17:16:22,148 - INFO - ReconNINJA script started
+2024-10-06 17:16:50,936 - INFO - Random delay of 29 seconds applied
+2024-10-06 17:16:50,937 - INFO - System uptime: 1198.9298333333331 minutes
+2024-10-06 17:16:50,937 - INFO - System uptime: 1198.9298333333331 minutes
+2024-10-06 17:16:50,937 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:16:50,937 - INFO - Starting Flask application on port 45427
+2024-10-06 17:16:50,958 - WARNING -  * Debugger is active!
+2024-10-06 17:16:50,960 - INFO -  * Debugger PIN: 145-168-778
+2024-10-06 17:16:50,990 - INFO - 172.31.196.47 - - [06/Oct/2024 17:16:50] "GET / HTTP/1.1" 200 -
+2024-10-06 17:16:52,520 - INFO - 172.31.196.47 - - [06/Oct/2024 17:16:52] "[33mGET /api/payloads HTTP/1.1[0m" 404 -
+2024-10-06 17:17:18,149 - INFO - Random delay of 56 seconds applied
+2024-10-06 17:17:18,149 - INFO - System uptime: 1199.3835 minutes
+2024-10-06 17:17:18,149 - INFO - System uptime: 1199.3835 minutes
+2024-10-06 17:17:18,149 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:17:18,150 - INFO - Starting Flask application on port 49835
+2024-10-06 17:17:18,164 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:49835
+ * Running on http://172.31.196.47:49835
+2024-10-06 17:17:18,164 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:17:18,165 - INFO -  * Restarting with stat
+2024-10-06 17:17:18,392 - INFO - ReconNINJA script started
+2024-10-06 17:17:51,392 - INFO - Random delay of 33 seconds applied
+2024-10-06 17:17:51,392 - INFO - System uptime: 1199.9375 minutes
+2024-10-06 17:17:51,393 - INFO - System uptime: 1199.9375 minutes
+2024-10-06 17:17:51,393 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:17:51,393 - INFO - Starting Flask application on port 42631
+2024-10-06 17:17:51,403 - WARNING -  * Debugger is active!
+2024-10-06 17:17:51,404 - INFO -  * Debugger PIN: 137-764-802
+2024-10-06 17:18:06,345 - INFO - ReconNINJA script started
+2024-10-06 17:18:29,345 - INFO - Random delay of 23 seconds applied
+2024-10-06 17:18:29,346 - INFO - System uptime: 1200.57 minutes
+2024-10-06 17:18:29,346 - INFO - System uptime: 1200.57 minutes
+2024-10-06 17:18:29,346 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:18:29,346 - INFO - Starting Flask application on port 54793
+2024-10-06 17:18:29,362 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:54793
+ * Running on http://172.31.196.47:54793
+2024-10-06 17:18:29,362 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:18:29,363 - INFO -  * Restarting with stat
+2024-10-06 17:18:29,589 - INFO - ReconNINJA script started
+2024-10-06 17:19:01,589 - INFO - Random delay of 32 seconds applied
+2024-10-06 17:19:01,590 - INFO - System uptime: 1201.1074999999998 minutes
+2024-10-06 17:19:01,590 - INFO - System uptime: 1201.1074999999998 minutes
+2024-10-06 17:19:01,590 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:19:01,590 - INFO - Starting Flask application on port 57461
+2024-10-06 17:19:01,600 - WARNING -  * Debugger is active!
+2024-10-06 17:19:01,602 - INFO -  * Debugger PIN: 671-514-217
+2024-10-06 17:19:57,900 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:19:57,900 - INFO - ReconNINJA script finished
+2024-10-06 17:19:57,930 - INFO -  * Restarting with stat
+2024-10-06 17:19:58,113 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:19:58,113 - INFO - ReconNINJA script finished
+2024-10-06 17:19:58,142 - INFO -  * Restarting with stat
+2024-10-06 17:19:58,156 - INFO - ReconNINJA script started
+2024-10-06 17:19:58,354 - INFO - ReconNINJA script started
+2024-10-06 17:20:13,156 - INFO - Random delay of 15 seconds applied
+2024-10-06 17:20:13,157 - INFO - System uptime: 1202.3001666666667 minutes
+2024-10-06 17:20:13,157 - INFO - System uptime: 1202.3001666666667 minutes
+2024-10-06 17:20:13,157 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:20:13,157 - INFO - Starting Flask application on port 38039
+2024-10-06 17:20:13,170 - WARNING -  * Debugger is active!
+2024-10-06 17:20:13,171 - INFO -  * Debugger PIN: 127-268-191
+2024-10-06 17:20:27,354 - INFO - Random delay of 29 seconds applied
+2024-10-06 17:20:27,354 - INFO - System uptime: 1202.5368333333333 minutes
+2024-10-06 17:20:27,355 - INFO - System uptime: 1202.5368333333333 minutes
+2024-10-06 17:20:27,355 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:20:27,355 - INFO - Starting Flask application on port 44733
+2024-10-06 17:20:27,364 - WARNING -  * Debugger is active!
+2024-10-06 17:20:27,365 - INFO -  * Debugger PIN: 310-634-662
+2024-10-06 17:20:37,627 - INFO -  * Detected change in '/home/runner/workspace/scripts/cloud_vulnerability_scan.py', reloading
+2024-10-06 17:20:37,627 - INFO - ReconNINJA script finished
+2024-10-06 17:20:37,664 - INFO -  * Restarting with stat
+2024-10-06 17:20:37,763 - INFO -  * Detected change in '/home/runner/workspace/scripts/cloud_vulnerability_scan.py', reloading
+2024-10-06 17:20:37,763 - INFO - ReconNINJA script finished
+2024-10-06 17:20:37,795 - INFO -  * Restarting with stat
+2024-10-06 17:20:37,883 - INFO - ReconNINJA script started
+2024-10-06 17:20:38,051 - INFO - ReconNINJA script started
+2024-10-06 17:20:38,681 - INFO - ReconNINJA script started
+2024-10-06 17:20:53,681 - INFO - Random delay of 15 seconds applied
+2024-10-06 17:20:53,681 - INFO - System uptime: 1202.9756666666665 minutes
+2024-10-06 17:20:53,682 - INFO - System uptime: 1202.9756666666665 minutes
+2024-10-06 17:20:53,682 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:20:53,682 - INFO - Starting Flask application on port 55927
+2024-10-06 17:20:53,697 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:55927
+ * Running on http://172.31.196.47:55927
+2024-10-06 17:20:53,697 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:20:53,698 - INFO -  * Restarting with stat
+2024-10-06 17:20:53,952 - INFO - ReconNINJA script started
+2024-10-06 17:21:06,953 - INFO - Random delay of 13 seconds applied
+2024-10-06 17:21:06,953 - INFO - System uptime: 1203.1968333333332 minutes
+2024-10-06 17:21:06,953 - INFO - System uptime: 1203.1968333333332 minutes
+2024-10-06 17:21:06,953 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:21:06,953 - INFO - Starting Flask application on port 38165
+2024-10-06 17:21:06,964 - WARNING -  * Debugger is active!
+2024-10-06 17:21:06,965 - INFO -  * Debugger PIN: 140-365-835
+2024-10-06 17:21:09,887 - INFO - ReconNINJA script started
+2024-10-06 17:21:36,883 - INFO - Random delay of 59 seconds applied
+2024-10-06 17:21:36,884 - INFO - System uptime: 1203.6956666666667 minutes
+2024-10-06 17:21:36,884 - INFO - System uptime: 1203.6956666666667 minutes
+2024-10-06 17:21:36,884 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:21:36,884 - INFO - Starting Flask application on port 33383
+2024-10-06 17:21:36,894 - WARNING -  * Debugger is active!
+2024-10-06 17:21:36,895 - INFO -  * Debugger PIN: 709-599-013
+2024-10-06 17:21:42,887 - INFO - Random delay of 33 seconds applied
+2024-10-06 17:21:42,887 - INFO - System uptime: 1203.7958333333333 minutes
+2024-10-06 17:21:42,888 - INFO - System uptime: 1203.7958333333333 minutes
+2024-10-06 17:21:42,888 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:21:42,888 - INFO - Starting Flask application on port 53949
+2024-10-06 17:21:42,902 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:53949
+ * Running on http://172.31.196.47:53949
+2024-10-06 17:21:42,902 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:21:42,902 - INFO -  * Restarting with stat
+2024-10-06 17:21:43,117 - INFO - ReconNINJA script started
+2024-10-06 17:21:58,118 - INFO - Random delay of 15 seconds applied
+2024-10-06 17:21:58,118 - INFO - System uptime: 1204.0496666666666 minutes
+2024-10-06 17:21:58,118 - INFO - System uptime: 1204.0496666666666 minutes
+2024-10-06 17:21:58,118 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:21:58,119 - INFO - Starting Flask application on port 43593
+2024-10-06 17:21:58,129 - WARNING -  * Debugger is active!
+2024-10-06 17:21:58,130 - INFO -  * Debugger PIN: 103-125-200
+2024-10-06 17:22:01,754 - INFO - ReconNINJA script started
+2024-10-06 17:22:58,754 - INFO - Random delay of 57 seconds applied
+2024-10-06 17:22:58,754 - INFO - System uptime: 1205.0601666666666 minutes
+2024-10-06 17:22:58,755 - INFO - System uptime: 1205.0601666666666 minutes
+2024-10-06 17:22:58,755 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:22:58,755 - INFO - Starting Flask application on port 49415
+2024-10-06 17:22:58,768 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:49415
+ * Running on http://172.31.196.47:49415
+2024-10-06 17:22:58,768 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:22:58,768 - INFO -  * Restarting with stat
+2024-10-06 17:22:58,996 - INFO - ReconNINJA script started
+2024-10-06 17:23:36,996 - INFO - Random delay of 38 seconds applied
+2024-10-06 17:23:36,996 - INFO - System uptime: 1205.6975 minutes
+2024-10-06 17:23:36,996 - INFO - System uptime: 1205.6975 minutes
+2024-10-06 17:23:36,997 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:23:36,997 - INFO - Starting Flask application on port 57905
+2024-10-06 17:23:37,007 - WARNING -  * Debugger is active!
+2024-10-06 17:23:37,008 - INFO -  * Debugger PIN: 105-780-482
+2024-10-06 17:23:44,284 - INFO - ReconNINJA script started
+2024-10-06 17:24:07,284 - INFO - Random delay of 23 seconds applied
+2024-10-06 17:24:07,285 - INFO - System uptime: 1206.2023333333334 minutes
+2024-10-06 17:24:07,285 - INFO - System uptime: 1206.2023333333334 minutes
+2024-10-06 17:24:07,285 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:24:07,286 - INFO - Starting Flask application on port 52777
+2024-10-06 17:24:07,300 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:52777
+ * Running on http://172.31.196.47:52777
+2024-10-06 17:24:07,300 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:24:07,300 - INFO -  * Restarting with stat
+2024-10-06 17:24:07,517 - INFO - ReconNINJA script started
+2024-10-06 17:24:50,517 - INFO - Random delay of 43 seconds applied
+2024-10-06 17:24:50,517 - INFO - System uptime: 1206.923 minutes
+2024-10-06 17:24:50,517 - INFO - System uptime: 1206.923 minutes
+2024-10-06 17:24:50,518 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:24:50,518 - INFO - Starting Flask application on port 41831
+2024-10-06 17:24:50,528 - WARNING -  * Debugger is active!
+2024-10-06 17:24:50,529 - INFO -  * Debugger PIN: 638-944-399
+2024-10-06 17:25:03,061 - INFO - ReconNINJA script started
+2024-10-06 17:26:03,062 - INFO - Random delay of 60 seconds applied
+2024-10-06 17:26:03,062 - INFO - System uptime: 1208.132 minutes
+2024-10-06 17:26:03,062 - INFO - System uptime: 1208.132 minutes
+2024-10-06 17:26:03,062 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:26:03,063 - INFO - Starting Flask application on port 36899
+2024-10-06 17:26:03,078 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:36899
+ * Running on http://172.31.196.47:36899
+2024-10-06 17:26:03,078 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:26:03,079 - INFO -  * Restarting with stat
+2024-10-06 17:26:03,292 - INFO - ReconNINJA script started
+2024-10-06 17:26:22,293 - INFO - Random delay of 19 seconds applied
+2024-10-06 17:26:22,293 - INFO - System uptime: 1208.4524999999999 minutes
+2024-10-06 17:26:22,293 - INFO - System uptime: 1208.4524999999999 minutes
+2024-10-06 17:26:22,293 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:26:22,294 - INFO - Starting Flask application on port 55427
+2024-10-06 17:26:22,304 - WARNING -  * Debugger is active!
+2024-10-06 17:26:22,305 - INFO -  * Debugger PIN: 122-891-665
+2024-10-06 17:26:29,433 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:26:29,434 - INFO - ReconNINJA script finished
+2024-10-06 17:26:29,476 - INFO -  * Restarting with stat
+2024-10-06 17:26:29,533 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 17:26:29,533 - INFO - ReconNINJA script finished
+2024-10-06 17:26:29,754 - INFO - ReconNINJA script started
+2024-10-06 17:26:29,828 - INFO - ReconNINJA script started
+2024-10-06 17:27:00,866 - INFO - ReconNINJA script started
+2024-10-06 17:27:20,755 - INFO - Random delay of 51 seconds applied
+2024-10-06 17:27:20,755 - INFO - System uptime: 1209.4268333333334 minutes
+2024-10-06 17:27:20,755 - INFO - System uptime: 1209.4268333333334 minutes
+2024-10-06 17:27:20,756 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:27:20,756 - INFO - Starting Flask application on port 34501
+2024-10-06 17:27:20,767 - WARNING -  * Debugger is active!
+2024-10-06 17:27:20,769 - INFO -  * Debugger PIN: 648-135-954
+2024-10-06 17:27:31,866 - INFO - Random delay of 31 seconds applied
+2024-10-06 17:27:31,866 - INFO - System uptime: 1209.612 minutes
+2024-10-06 17:27:31,867 - INFO - System uptime: 1209.612 minutes
+2024-10-06 17:27:31,867 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:27:31,868 - INFO - Starting Flask application on port 57725
+2024-10-06 17:27:31,886 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:57725
+ * Running on http://172.31.196.47:57725
+2024-10-06 17:27:31,886 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 17:27:31,887 - INFO -  * Restarting with stat
+2024-10-06 17:27:32,133 - INFO - ReconNINJA script started
+2024-10-06 17:28:11,134 - INFO - Random delay of 39 seconds applied
+2024-10-06 17:28:11,134 - INFO - System uptime: 1210.2665000000002 minutes
+2024-10-06 17:28:11,134 - INFO - System uptime: 1210.2665000000002 minutes
+2024-10-06 17:28:11,134 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 17:28:11,135 - INFO - Starting Flask application on port 47223
+2024-10-06 17:28:11,147 - WARNING -  * Debugger is active!
+2024-10-06 17:28:11,149 - INFO -  * Debugger PIN: 141-553-129
+2024-10-06 18:08:23,090 - INFO - ReconNINJA script started
+2024-10-06 18:08:23,090 - INFO - ReconNINJA script started
+2024-10-06 18:08:23,090 - INFO - ReconNINJA script started
+2024-10-06 18:08:41,092 - INFO - Random delay of 18 seconds applied
+2024-10-06 18:08:41,093 - INFO - System uptime: 1481.3016666666667 minutes
+2024-10-06 18:08:41,093 - INFO - System uptime: 1481.3016666666667 minutes
+2024-10-06 18:08:41,093 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:08:41,094 - INFO - Starting Flask application on port 44819
+2024-10-06 18:08:41,113 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:44819
+ * Running on http://172.31.196.43:44819
+2024-10-06 18:08:41,113 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 18:08:41,114 - INFO -  * Restarting with stat
+2024-10-06 18:08:41,309 - INFO - ReconNINJA script started
+2024-10-06 18:08:58,310 - INFO - Random delay of 17 seconds applied
+2024-10-06 18:08:58,310 - INFO - System uptime: 1481.5886666666668 minutes
+2024-10-06 18:08:58,310 - INFO - System uptime: 1481.5886666666668 minutes
+2024-10-06 18:08:58,310 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:08:58,310 - INFO - Starting Flask application on port 52645
+2024-10-06 18:08:58,320 - WARNING -  * Debugger is active!
+2024-10-06 18:08:58,322 - INFO -  * Debugger PIN: 121-749-857
+2024-10-06 18:08:58,352 - INFO - 172.31.196.43 - - [06/Oct/2024 18:08:58] "GET / HTTP/1.1" 200 -
+2024-10-06 18:08:58,354 - INFO - 172.31.196.43 - - [06/Oct/2024 18:08:58] "GET / HTTP/1.1" 200 -
+2024-10-06 18:08:58,648 - INFO - 172.31.196.43 - - [06/Oct/2024 18:08:58] "GET /static/css/style.css HTTP/1.1" 200 -
+2024-10-06 18:09:03,092 - INFO - Random delay of 40 seconds applied
+2024-10-06 18:09:03,092 - INFO - Random delay of 40 seconds applied
+2024-10-06 18:09:03,093 - INFO - System uptime: 1481.6683333333335 minutes
+2024-10-06 18:09:03,093 - INFO - System uptime: 1481.6683333333335 minutes
+2024-10-06 18:09:03,093 - INFO - System uptime: 1481.6683333333335 minutes
+2024-10-06 18:09:03,093 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:09:03,093 - INFO - System uptime: 1481.6683333333335 minutes
+2024-10-06 18:09:03,093 - INFO - Starting Flask application on port 54731
+2024-10-06 18:09:03,093 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:09:03,094 - INFO - Starting Flask application on port 46145
+2024-10-06 18:09:03,107 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:46145
+ * Running on http://172.31.196.43:46145
+2024-10-06 18:09:03,107 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:54731
+ * Running on http://172.31.196.43:54731
+2024-10-06 18:09:03,107 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 18:09:03,107 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-06 18:09:03,108 - INFO -  * Restarting with stat
+2024-10-06 18:09:03,108 - INFO -  * Restarting with stat
+2024-10-06 18:09:03,309 - INFO - ReconNINJA script started
+2024-10-06 18:09:03,310 - INFO - ReconNINJA script started
+2024-10-06 18:09:03,972 - INFO - 172.31.196.43 - - [06/Oct/2024 18:09:03] "GET /static/css/style.css HTTP/1.1" 200 -
+2024-10-06 18:09:16,908 - INFO - 172.31.196.43 - - [06/Oct/2024 18:09:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-10-06 18:09:43,309 - INFO - Random delay of 40 seconds applied
+2024-10-06 18:09:43,310 - INFO - System uptime: 1482.3386666666668 minutes
+2024-10-06 18:09:43,310 - INFO - System uptime: 1482.3386666666668 minutes
+2024-10-06 18:09:43,310 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:09:43,310 - INFO - Starting Flask application on port 53309
+2024-10-06 18:09:43,319 - WARNING -  * Debugger is active!
+2024-10-06 18:09:43,320 - INFO -  * Debugger PIN: 662-874-456
+2024-10-06 18:09:54,310 - INFO - Random delay of 51 seconds applied
+2024-10-06 18:09:54,310 - INFO - System uptime: 1482.5220000000002 minutes
+2024-10-06 18:09:54,310 - INFO - System uptime: 1482.5220000000002 minutes
+2024-10-06 18:09:54,311 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:09:54,311 - INFO - Starting Flask application on port 38985
+2024-10-06 18:09:54,320 - WARNING -  * Debugger is active!
+2024-10-06 18:09:54,321 - INFO -  * Debugger PIN: 138-553-849
+2024-10-06 18:13:18,512 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 18:13:18,512 - INFO - ReconNINJA script finished
+2024-10-06 18:13:18,541 - INFO -  * Restarting with stat
+2024-10-06 18:13:18,636 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 18:13:18,636 - INFO - ReconNINJA script finished
+2024-10-06 18:13:18,666 - INFO -  * Restarting with stat
+2024-10-06 18:13:18,741 - INFO - ReconNINJA script started
+2024-10-06 18:13:18,796 - INFO -  * Detected change in '/home/runner/workspace/scripts/recon_ninja.py', reloading
+2024-10-06 18:13:18,797 - INFO - ReconNINJA script finished
+2024-10-06 18:13:18,824 - INFO -  * Restarting with stat
+2024-10-06 18:13:18,876 - INFO - ReconNINJA script started
+2024-10-06 18:13:19,023 - INFO - ReconNINJA script started
+2024-10-06 18:13:42,741 - INFO - Random delay of 24 seconds applied
+2024-10-06 18:13:42,741 - INFO - System uptime: 1486.3291666666667 minutes
+2024-10-06 18:13:42,741 - INFO - System uptime: 1486.3291666666667 minutes
+2024-10-06 18:13:42,742 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:13:42,742 - INFO - Starting Flask application on port 51863
+2024-10-06 18:13:42,751 - WARNING -  * Debugger is active!
+2024-10-06 18:13:42,752 - INFO -  * Debugger PIN: 980-074-493
+2024-10-06 18:13:45,876 - INFO - Random delay of 27 seconds applied
+2024-10-06 18:13:45,876 - INFO - System uptime: 1486.3813333333335 minutes
+2024-10-06 18:13:45,876 - INFO - System uptime: 1486.3813333333335 minutes
+2024-10-06 18:13:45,877 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:13:45,877 - INFO - Starting Flask application on port 42813
+2024-10-06 18:13:45,887 - WARNING -  * Debugger is active!
+2024-10-06 18:13:45,888 - INFO -  * Debugger PIN: 193-764-158
+2024-10-06 18:14:12,024 - INFO - Random delay of 53 seconds applied
+2024-10-06 18:14:12,024 - INFO - System uptime: 1486.8171666666667 minutes
+2024-10-06 18:14:12,024 - INFO - System uptime: 1486.8171666666667 minutes
+2024-10-06 18:14:12,025 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-06 18:14:12,025 - INFO - Starting Flask application on port 40311
+2024-10-06 18:14:12,034 - WARNING -  * Debugger is active!
+2024-10-06 18:14:12,035 - INFO -  * Debugger PIN: 114-880-869
+2024-10-09 12:24:05,306 - INFO - ReconNINJA script started
+2024-10-09 12:24:05,306 - INFO - ReconNINJA script started
+2024-10-09 12:24:05,306 - INFO - ReconNINJA script started
+2024-10-09 12:24:24,309 - INFO - Random delay of 19 seconds applied
+2024-10-09 12:24:24,309 - INFO - System uptime: 817.0398333333334 minutes
+2024-10-09 12:24:24,309 - INFO - System uptime: 817.0398333333334 minutes
+2024-10-09 12:24:24,309 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-09 12:24:24,310 - INFO - Starting Flask application on port 51271
+2024-10-09 12:24:24,331 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:51271
+ * Running on http://172.31.196.55:51271
+2024-10-09 12:24:24,331 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-09 12:24:24,333 - INFO -  * Restarting with stat
+2024-10-09 12:24:24,531 - INFO - ReconNINJA script started
+2024-10-09 12:24:34,309 - INFO - Random delay of 29 seconds applied
+2024-10-09 12:24:34,309 - INFO - System uptime: 817.2065 minutes
+2024-10-09 12:24:34,309 - INFO - System uptime: 817.2065 minutes
+2024-10-09 12:24:34,309 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-09 12:24:34,310 - INFO - Starting Flask application on port 32791
+2024-10-09 12:24:34,325 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:32791
+ * Running on http://172.31.196.55:32791
+2024-10-09 12:24:34,325 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-09 12:24:34,326 - INFO -  * Restarting with stat
+2024-10-09 12:24:34,524 - INFO - ReconNINJA script started
+2024-10-09 12:24:38,532 - INFO - Random delay of 14 seconds applied
+2024-10-09 12:24:38,532 - INFO - System uptime: 817.2768333333333 minutes
+2024-10-09 12:24:38,532 - INFO - System uptime: 817.2768333333333 minutes
+2024-10-09 12:24:38,532 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-09 12:24:38,532 - INFO - Starting Flask application on port 39595
+2024-10-09 12:24:38,542 - WARNING -  * Debugger is active!
+2024-10-09 12:24:38,543 - INFO -  * Debugger PIN: 379-503-662
+2024-10-09 12:24:49,309 - INFO - Random delay of 44 seconds applied
+2024-10-09 12:24:49,309 - INFO - System uptime: 817.4565 minutes
+2024-10-09 12:24:49,309 - INFO - System uptime: 817.4565 minutes
+2024-10-09 12:24:49,309 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-09 12:24:49,309 - INFO - Starting Flask application on port 41173
+2024-10-09 12:24:49,325 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:41173
+ * Running on http://172.31.196.55:41173
+2024-10-09 12:24:49,325 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-09 12:24:49,325 - INFO -  * Restarting with stat
+2024-10-09 12:24:49,524 - INFO - ReconNINJA script started
+2024-10-09 12:25:17,524 - INFO - Random delay of 43 seconds applied
+2024-10-09 12:25:17,524 - INFO - System uptime: 817.9266666666666 minutes
+2024-10-09 12:25:17,524 - INFO - System uptime: 817.9266666666666 minutes
+2024-10-09 12:25:17,525 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-09 12:25:17,525 - INFO - Starting Flask application on port 35783
+2024-10-09 12:25:17,535 - WARNING -  * Debugger is active!
+2024-10-09 12:25:17,536 - INFO -  * Debugger PIN: 747-387-205
+2024-10-09 12:25:46,525 - INFO - Random delay of 57 seconds applied
+2024-10-09 12:25:46,525 - INFO - System uptime: 818.41 minutes
+2024-10-09 12:25:46,525 - INFO - System uptime: 818.41 minutes
+2024-10-09 12:25:46,525 - WARNING - Self-regeneration feature is disabled (SCRIPT_URL is None)
+2024-10-09 12:25:46,526 - INFO - Starting Flask application on port 46075
+2024-10-09 12:25:46,535 - WARNING -  * Debugger is active!
+2024-10-09 12:25:46,536 - INFO -  * Debugger PIN: 148-243-542
+2024-10-09 12:28:00,099 - INFO - 172.31.196.55 - - [09/Oct/2024 12:28:00] "GET / HTTP/1.1" 200 -
+2024-10-09 12:28:21,710 - INFO - 172.31.196.55 - - [09/Oct/2024 12:28:21] "GET /static/css/style.css HTTP/1.1" 200 -
+2024-10-09 13:51:19,808 - INFO - 172.31.196.55 - - [09/Oct/2024 13:51:19] "GET / HTTP/1.1" 200 -
+2024-10-09 13:52:27,185 - INFO - 172.31.196.55 - - [09/Oct/2024 13:52:27] "GET /static/css/style.css HTTP/1.1" 200 -
+2024-10-09 15:27:46,381 - INFO - 172.31.196.55 - - [09/Oct/2024 15:27:46] "GET / HTTP/1.1" 200 -
+2024-10-09 15:27:46,687 - INFO - 172.31.196.55 - - [09/Oct/2024 15:27:46] "GET /static/css/style.css HTTP/1.1" 200 -
+2024-10-09 15:28:58,232 - INFO - 172.31.196.55 - - [09/Oct/2024 15:28:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

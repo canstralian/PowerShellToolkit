@@ -1,0 +1,161 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ReconNINJA</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <h4 class="sidebar-heading">ReconNINJA</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Logs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h1 class="mt-4">Admin Dashboard</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-header">Total Scans</div>
+                            <div class="card-body">
+                                <h5 class="card-title" id="totalScans">0</h5>
+                                <p class="card-text">Total number of scans conducted.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-success mb-3">
+                            <div class="card-header">Active Users</div>
+                            <div class="card-body">
+                                <h5 class="card-title" id="activeUsers">0</h5>
+                                <p class="card-text">Number of users currently active.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-danger mb-3">
+                            <div class="card-header">Critical Alerts</div>
+                            <div class="card-body">
+                                <h5 class="card-title" id="criticalAlerts">0</h5>
+                                <p class="card-text">Number of critical alerts raised.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mt-4">Recent Activity</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityLog">
+                        <!-- Activity log will be populated here -->
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+```
+
+```css
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-heading {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.table {
+    margin-top: 20px;
+}
+```
+
+```js
+$(document).ready(function() {
+    // Simulate data for the dashboard
+    const totalScans = Math.floor(Math.random() * 100);
+    const activeUsers = Math.floor(Math.random() * 50);
+    const criticalAlerts = Math.floor(Math.random() * 10);
+
+    $('#totalScans').text(totalScans);
+    $('#activeUsers').text(activeUsers);
+    $('#criticalAlerts').text(criticalAlerts);
+
+    // Simulate recent activity log
+    const activities = [
+        { date: '2023-10-01', user: 'Admin', action: 'Started a new scan' },
+        { date: '2023-10-02', user: 'User1', action: 'Completed a scan' },
+        { date: '2023-10-03', user: 'User2', action: 'Raised an alert' },
+        { date: '2023-10-04', user: 'Admin', action: 'Updated settings' },
+    ];
+
+    activities.forEach(activity => {
+        $('#activityLog').append(`
+            <tr>
+                <td>${activity.date}</td>
+                <td>${activity.user}</td>
+                <td>${activity.action}</td>
+            </tr>
+        `);
+    });
+});
+```

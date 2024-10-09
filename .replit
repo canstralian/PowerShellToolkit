@@ -77,3 +77,35 @@ run = ["sh", "-c", "python admin_toolbox.py"]
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 32791
+externalPort = 5173
+
+[[ports]]
+localPort = 41173
+externalPort = 6000
+
+[[ports]]
+localPort = 44819
+externalPort = 3002
+
+[[ports]]
+localPort = 46145
+externalPort = 4200
+
+[[ports]]
+localPort = 49547
+externalPort = 3000
+
+[[ports]]
+localPort = 49835
+externalPort = 3001
+
+[[ports]]
+localPort = 51271
+externalPort = 5000
+
+[[ports]]
+localPort = 54731
+externalPort = 3003

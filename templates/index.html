@@ -4,9 +4,411 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReconNINJ@</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <h1>Welcome to ReconNINJ@</h1>
-    <p>This is the main page of the ReconNINJ@ application.</p>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <h3 class="sidebar-heading">ReconNINJ@</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#usb-hid">USB HID Testing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#firmware">Firmware Analysis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#device-comm">Device Communication</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#payload">Payload Management</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#duckyscript">DuckyScript Payloads</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cloud-vuln">Cloud Vulnerability Scan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cloud-network">Cloud Network Mapping</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cloud-webapp">Cloud Web App Security</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
+                <div id="dashboard" class="mt-4">
+                    <h1>ReconNINJ@ Dashboard</h1>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Scans</h5>
+                                    <p class="card-text" id="totalScans">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Active Users</h5>
+                                    <p class="card-text" id="activeUsers">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Critical Alerts</h5>
+                                    <p class="card-text" id="criticalAlerts">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="mt-4">Recent Activity</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Activity</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentActivity">
+                            <!-- Activity logs will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="usb-hid" class="mt-5">
+                    <h2>USB HID Penetration Testing</h2>
+                    <button onclick="runUsbHidPentest()" class="btn btn-primary">Run USB HID Pentest</button>
+                    <div id="usbHidResults" class="mt-3"></div>
+                </div>
+
+                <div id="firmware" class="mt-5">
+                    <h2>Firmware Analysis</h2>
+                    <form id="firmwareForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" id="firmwareFile" name="firmware" accept=".bin,.hex,.fw" class="form-control-file">
+                        </div>
+                        <button type="button" onclick="runFirmwareAnalysis()" class="btn btn-primary">Analyze Firmware</button>
+                    </form>
+                    <div id="firmwareResults" class="mt-3"></div>
+                </div>
+
+                <div id="device-comm" class="mt-5">
+                    <h2>Device Communication Analysis</h2>
+                    <button onclick="runDeviceCommunicationAnalysis()" class="btn btn-primary">Analyze Device Communications</button>
+                    <div id="deviceCommunicationResults" class="mt-3"></div>
+                </div>
+
+                <div id="payload" class="mt-5">
+                    <h2>Payload Management</h2>
+                    <button onclick="listPayloads()" class="btn btn-primary">List Available Payloads</button>
+                    <div id="payloadList" class="mt-3"></div>
+                    <h3 class="mt-4">Create Payload</h3>
+                    <div class="form-group">
+                        <input type="text" id="payloadName" placeholder="Payload Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <select id="payloadType" class="form-control">
+                            <option value="bash">Bash</option>
+                            <option value="python">Python</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="payloadContent" placeholder="Payload Content" class="form-control"></textarea>
+                    </div>
+                    <button onclick="createPayload()" class="btn btn-primary">Create Payload</button>
+                    <h3 class="mt-4">Test Payload</h3>
+                    <div class="form-group">
+                        <select id="testPayloadName" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="targetIP" placeholder="Target IP (default: localhost)" class="form-control">
+                    </div>
+                    <button onclick="testPayload()" class="btn btn-primary">Test Payload</button>
+                    <div id="payloadTestResult" class="mt-3"></div>
+                </div>
+
+                <div id="duckyscript" class="mt-5">
+                    <h2>DuckyScript Payloads</h2>
+                    <button onclick="listDuckyScriptPayloads()" class="btn btn-primary">List DuckyScript Payloads</button>
+                    <div id="duckyScriptPayloadList" class="mt-3"></div>
+                    <h3 class="mt-4">Create DuckyScript Payload</h3>
+                    <div class="form-group">
+                        <input type="text" id="duckyScriptPayloadName" placeholder="Payload Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="duckyScriptPayloadContent" placeholder="DuckyScript Content" class="form-control" rows="5"></textarea>
+                    </div>
+                    <button onclick="createDuckyScriptPayload()" class="btn btn-primary">Create DuckyScript Payload</button>
+                    <h3 class="mt-4">Execute DuckyScript Payload</h3>
+                    <div class="form-group">
+                        <select id="executeDuckyScriptPayloadName" class="form-control"></select>
+                    </div>
+                    <button onclick="executeDuckyScriptPayload()" class="btn btn-primary">Execute DuckyScript Payload</button>
+                    <div id="duckyScriptPayloadResult" class="mt-3"></div>
+                </div>
+
+                <div id="cloud-vuln" class="mt-5">
+                    <h2>Cloud-based Vulnerability Scan</h2>
+                    <div class="form-group">
+                        <input type="text" id="vulnScanTarget" placeholder="Enter target URL or IP" class="form-control">
+                    </div>
+                    <button onclick="runCloudVulnerabilityScan()" class="btn btn-primary">Run Cloud Vulnerability Scan</button>
+                    <div id="cloudVulnScanResults" class="mt-3"></div>
+                </div>
+
+                <div id="cloud-network" class="mt-5">
+                    <h2>Cloud-based Network Mapping</h2>
+                    <div class="form-group">
+                        <input type="text" id="networkMapTarget" placeholder="Enter target URL or IP" class="form-control">
+                    </div>
+                    <button onclick="runCloudNetworkMapping()" class="btn btn-primary">Run Cloud Network Mapping</button>
+                    <div id="cloudNetworkMapResults" class="mt-3"></div>
+                </div>
+
+                <div id="cloud-webapp" class="mt-5 mb-5">
+                    <h2>Cloud-based Web Application Security Test</h2>
+                    <div class="form-group">
+                        <input type="text" id="webAppSecTarget" placeholder="Enter target URL" class="form-control">
+                    </div>
+                    <button onclick="runCloudWebAppSecurityTest()" class="btn btn-primary">Run Web App Security Test</button>
+                    <div id="cloudWebAppSecResults" class="mt-3"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function runUsbHidPentest() {
+            axios.post('/api/usb_hid_pentest')
+                .then(function (response) {
+                    document.getElementById('usbHidResults').innerHTML = `<p>${response.data.result}</p>`;
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                    document.getElementById('usbHidResults').innerHTML = '<p>Error running USB HID pentest</p>';
+                });
+        }
+
+        function runFirmwareAnalysis() {
+            var formData = new FormData();
+            var firmwareFile = document.getElementById('firmwareFile').files[0];
+            formData.append('firmware', firmwareFile);
+
+            axios.post('/api/firmware_analysis', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(function (response) {
+                document.getElementById('firmwareResults').innerHTML = `<p>${response.data.result}</p>`;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                document.getElementById('firmwareResults').innerHTML = '<p>Error analyzing firmware</p>';
+            });
+        }
+
+        function runDeviceCommunicationAnalysis() {
+            axios.post('/api/device_communication_analysis')
+                .then(function (response) {
+                    document.getElementById('deviceCommunicationResults').innerHTML = `<p>${response.data.result}</p>`;
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                    document.getElementById('deviceCommunicationResults').innerHTML = '<p>Error analyzing device communications</p>';
+                });
+        }
+
+        function listPayloads() {
+            axios.get('/api/payloads')
+                .then(function (response) {
+                    const payloads = response.data.payloads;
+                    let payloadListHtml = '<ul>';
+                    payloads.forEach(payload => {
+                        payloadListHtml += `<li>${payload}</li>`;
+                    });
+                    payloadListHtml += '</ul>';
+                    document.getElementById('payloadList').innerHTML = payloadListHtml;
+
+                    // Populate the test payload dropdown
+                    const selectElement = document.getElementById('testPayloadName');
+                    selectElement.innerHTML = '';
+                    payloads.forEach(payload => {
+                        const option = document.createElement('option');
+                        option.value = payload;
+                        option.textContent = payload;
+                        selectElement.appendChild(option);
+                    });
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                    document.getElementById('payloadList').innerHTML = '<p>Error listing payloads</p>';
+                });
+        }
+
+        function createPayload() {
+            const name = document.getElementById('payloadName').value;
+            const type = document.getElementById('payloadType').value;
+            const content = document.getElementById('payloadContent').value;
+            axios.post('/api/payload', {
+                name: name,
+                type: type,
+                content: content
+            })
+            .then(function (response) {
+                alert(response.data.message);
+                listPayloads();
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                alert('Error creating payload');
+            });
+        }
+
+        function testPayload() {
+            const name = document.getElementById('testPayloadName').value;
+            const targetIP = document.getElementById('targetIP').value || 'localhost';
+            axios.post('/api/test_payload', {
+                name: name,
+                target_ip: targetIP
+            })
+            .then(function (response) {
+                document.getElementById('payloadTestResult').innerHTML = `<p>${response.data.result}</p>`;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                document.getElementById('payloadTestResult').innerHTML = '<p>Error testing payload</p>';
+            });
+        }
+
+        function listDuckyScriptPayloads() {
+            axios.get('/api/duckyscript_payloads')
+                .then(function (response) {
+                    const payloads = response.data.payloads;
+                    let payloadListHtml = '<ul>';
+                    payloads.forEach(payload => {
+                        payloadListHtml += `<li>${payload}</li>`;
+                    });
+                    payloadListHtml += '</ul>';
+                    document.getElementById('duckyScriptPayloadList').innerHTML = payloadListHtml;
+
+                    // Populate the execute payload dropdown
+                    const selectElement = document.getElementById('executeDuckyScriptPayloadName');
+                    selectElement.innerHTML = '';
+                    payloads.forEach(payload => {
+                        const option = document.createElement('option');
+                        option.value = payload;
+                        option.textContent = payload;
+                        selectElement.appendChild(option);
+                    });
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                    document.getElementById('duckyScriptPayloadList').innerHTML = '<p>Error listing DuckyScript payloads</p>';
+                });
+        }
+
+        function createDuckyScriptPayload() {
+            const name = document.getElementById('duckyScriptPayloadName').value;
+            const content = document.getElementById('duckyScriptPayloadContent').value;
+            axios.post('/api/duckyscript_payload', {
+                action: 'create',
+                name: name,
+                content: content
+            })
+            .then(function (response) {
+                alert(response.data.message);
+                listDuckyScriptPayloads();
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                alert('Error creating DuckyScript payload');
+            });
+        }
+
+        function executeDuckyScriptPayload() {
+            const name = document.getElementById('executeDuckyScriptPayloadName').value;
+            axios.post('/api/duckyscript_payload', {
+                action: 'execute',
+                name: name
+            })
+            .then(function (response) {
+                document.getElementById('duckyScriptPayloadResult').innerHTML = `<p>${response.data.result}</p>`;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                document.getElementById('duckyScriptPayloadResult').innerHTML = '<p>Error executing DuckyScript payload</p>';
+            });
+        }
+
+        function runCloudVulnerabilityScan() {
+            const target = document.getElementById('vulnScanTarget').value;
+            axios.post('/api/cloud_vulnerability_scan', {
+                target: target
+            })
+            .then(function (response) {
+                document.getElementById('cloudVulnScanResults').innerHTML = `<p>${response.data.result}</p>`;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                document.getElementById('cloudVulnScanResults').innerHTML = '<p>Error running cloud vulnerability scan</p>';
+            });
+        }
+
+        function runCloudNetworkMapping() {
+            const target = document.getElementById('networkMapTarget').value;
+            axios.post('/api/cloud_network_mapping', {
+                target: target
+            })
+            .then(function (response) {
+                document.getElementById('cloudNetworkMapResults').innerHTML = `<p>${response.data.result}</p>`;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                document.getElementById('cloudNetworkMapResults').innerHTML = '<p>Error running cloud network mapping</p>';
+            });
+        }
+
+        function runCloudWebAppSecurityTest() {
+            const target = document.getElementById('webAppSecTarget').value;
+            axios.post('/api/cloud_webapp_security_test', {
+                target: target
+            })
+            .then(function (response) {
+                document.getElementById('cloudWebAppSecResults').innerHTML = `<p>${response.data.result}</p>`;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+                document.getElementById('cloudWebAppSecResults').innerHTML = '<p>Error running cloud web app security test</p>';
+            });
+        }
+
+        // Initialize by listing payloads
+        listPayloads();
+        listDuckyScriptPayloads();
+
+        // Simulated dashboard data (replace with real data in production)
+        document.getElementById('totalScans').textContent = Math.floor(Math.random() * 1000);
+        document.getElementById('activeUsers').textContent = Math.floor(Math.random() * 100);
+        document.getElementById('criticalAlerts').textContent = Math.floor(Math.random() * 10);
+
+        // Simulated recent activity (replace with real data in production)
+        var recentActivityData = [
+            {timestamp: '2024-10-06 17:30:00', activity: 'USB HID Pentest', status: 'Completed'},
+            {timestamp: '2024-10-06 17:15:00', activity: 'Firmware Analysis', status: 'In Progress'},
+            {timestamp: '2024-10-06 17:00:00', activity: 'Cloud Vulnerability Scan', status: 'Completed'},
+        ];
+
+        var recentActivityBody = document.getElementById('recentActivity');
+        recentActivityData.forEach(function(item) {
+            var row = recentActivityBody.insertRow();
+            row.insertCell(0).textContent = item.timestamp;
+            row.insertCell(1).textContent = item.activity;
+            row.insertCell(2).textContent = item.status;
+        });
+    </script>
 </body>
 </html>

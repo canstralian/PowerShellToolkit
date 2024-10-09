@@ -1,0 +1,123 @@
+:root {
+    --dark-slate: #1F3A3D;
+    --sky-blue: #4B8BBE;
+    --light-coral: #F9AFAF;
+    --white-smoke: #F6F6F6;
+    --golden-brown: #D9BF77;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--white-smoke);
+    color: var(--dark-slate);
+}
+
+.sidebar {
+    background-color: var(--dark-slate);
+    color: var(--white-smoke);
+    min-height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar-heading {
+    color: var(--sky-blue);
+    padding: 10px 15px;
+    font-size: 1.2rem;
+}
+
+.sidebar .nav-link {
+    color: var(--white-smoke);
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--golden-brown);
+    background-color: rgba(255,255,255,0.1);
+}
+
+main {
+    padding-top: 20px;
+}
+
+h1, h2, h3 {
+    color: var(--sky-blue);
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: var(--sky-blue);
+    border-color: var(--sky-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--golden-brown);
+    border-color: var(--golden-brown);
+}
+
+.card {
+    background-color: var(--white-smoke);
+    border: 1px solid var(--dark-slate);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: var(--sky-blue);
+}
+
+.table {
+    background-color: var(--white-smoke);
+}
+
+.table thead th {
+    background-color: var(--dark-slate);
+    color: var(--white-smoke);
+}
+
+.form-control {
+    border: 1px solid var(--dark-slate);
+    border-radius: 4px;
+}
+
+#payloadContent {
+    height: 100px;
+}
+
+.error {
+    color: var(--light-coral);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: static;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    main {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        padding-top: 48px;
+    }
+}
