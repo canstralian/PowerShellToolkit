@@ -1,0 +1,85 @@
+For your **DuckyScript** payloads, you should follow a structured naming convention and use the `.txt` extension. DuckyScript payloads are traditionally plain text files, so `.txt` is the appropriate file extension. Below is a suggested naming format and some example names based on the payloads:
+
+### Naming Convention:
+- Use descriptive, concise names that explain the function of the payload.
+- Separate words with underscores for readability.
+- Consider numbering or categorizing them based on the type of attack (e.g., `admin_`, `wifi_`, `shell_`).
+
+### Example Filenames:
+1. **Add New Admin User (Windows)**:  
+   `add_admin_user.txt`
+
+2. **Disable Firewall (Windows)**:  
+   `disable_firewall.txt`
+
+3. **Enable RDP (Windows)**:  
+   `enable_rdp.txt`
+
+4. **Dump Wi-Fi Passwords (Windows)**:  
+   `dump_wifi_passwords.txt`
+
+5. **Launch Hidden PowerShell (Windows)**:  
+   `launch_hidden_powershell.txt`
+
+6. **Force Shutdown (Windows)**:  
+   `force_shutdown.txt`
+
+7. **Create a Reverse Shell (Windows)**:  
+   `create_reverse_shell.txt`
+
+8. **Install Backdoor (Windows)**:  
+   `install_backdoor.txt`
+
+9. **Collect System Info (Windows)**:  
+   `collect_system_info.txt`
+
+10. **Block Internet Access (Windows)**:  
+    `block_internet_access.txt`
+
+11. **Open SSH Backdoor (Linux)**:  
+    `ssh_backdoor_linux.txt`
+
+12. **Sudo Password Theft (Linux)**:  
+    `steal_sudo_passwords.txt`
+
+13. **Setup Netcat Reverse Shell (Linux)**:  
+    `netcat_reverse_shell.txt`
+
+14. **Disable UFW Firewall (Linux)**:  
+    `disable_ufw_firewall.txt`
+
+15. **Mount USB for Data Exfiltration (Linux)**:  
+    `mount_usb_exfiltrate.txt`
+
+16. **Capture Keylog (Windows)**:  
+    `capture_keylog.txt`
+
+17. **Modify Hosts File (Windows)**:  
+    `modify_hosts_file.txt`
+
+18. **Elevate Privileges to Root (Linux)**:  
+    `elevate_privileges_root.txt`
+
+19. **Ransom Note (Windows)**:  
+    `drop_ransom_note.txt`
+
+20. **Kill Process (Windows)**:  
+    `kill_process.txt`
+
+### Folder Structure Suggestion:
+You might want to organize them into folders based on OS or functionality, for example:
+```
+reconninja_payloads/
+│
+├── windows/
+│   ├── add_admin_user.txt
+│   ├── disable_firewall.txt
+│   └── ...
+│
+└── linux/
+    ├── ssh_backdoor_linux.txt
+    ├── netcat_reverse_shell.txt
+    └── ...
+```
+
+This approach will keep your payloads well-organized and easy to locate, especially as the library grows!

